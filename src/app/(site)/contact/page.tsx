@@ -34,11 +34,10 @@ export default function ContactPage() {
       <JsonLd data={jsonLd} />
 
       <section className="relative pb-16 pt-[calc(var(--header-h)+clamp(4rem,10vw,8rem))]">
-        <div className="column-rules" aria-hidden />
-        <div className="shell relative">
-          <p className="meta meta-blue">{profile.availability}</p>
-          <h1 className="mt-6 font-display text-mega font-semibold text-paper">
-            <RevealLines lines={contactLines} immediate delay={0.1} fit />
+                <div className="shell relative">
+          <p className="flex items-center gap-2 text-paper/75"><span aria-hidden className="h-1.5 w-1.5 rounded-full bg-congo shadow-[0_0_0_3px_rgba(31,107,78,0.25)]" />{profile.availability}</p>
+          <h1 className="mt-6 text-display font-semibold text-paper">
+            <RevealLines lines={contactLines} immediate delay={0.1} />
           </h1>
           <Reveal delay={0.3}>
             <p className="measure mt-8 text-lead text-paper/70">
@@ -65,11 +64,11 @@ export default function ContactPage() {
                     {...(channel.href.startsWith("http")
                       ? { target: "_blank", rel: "noreferrer" }
                       : {})}
-                    data-cursor="OUVRIR"
+                   
                     className="group flex items-center justify-between gap-4 py-5"
                   >
                     <span className="meta">{channel.label}</span>
-                    <span className="flex items-center gap-2 text-sm text-paper transition-colors duration-300 group-hover:text-blue-text">
+                    <span className="flex items-center gap-2 text-sm text-paper transition-colors duration-300 group-hover:text-gold">
                       {channel.value}
                       <ArrowUpRight className="h-3.5 w-3.5" />
                     </span>

@@ -3,41 +3,42 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: ["./src/components/**/*.{ts,tsx}", "./src/app/**/*.{ts,tsx}"],
   theme: {
-    // A closed palette: four values, nothing else. Anything that needs to sit
-    // between them uses an alpha of paper/ink rather than a new hue.
+    // A closed palette, from the brief. Gold is the only accent and stays
+    // rare; Congo green and night blue exist for depth, never for text.
     colors: {
       transparent: "transparent",
       current: "currentColor",
       ink: {
         DEFAULT: "#050505",
-        raised: "#0B0B0C",
-        line: "rgba(242,240,234,0.12)",
-        soft: "rgba(242,240,234,0.06)",
+        raised: "#0A0C10",
+        line: "rgba(244,241,234,0.12)",
+        soft: "rgba(244,241,234,0.06)",
       },
+      night: { DEFAULT: "#07111F", deep: "#040A13" },
       paper: {
-        DEFAULT: "#F2F0EA",
+        DEFAULT: "#F4F1EA",
         line: "rgba(5,5,5,0.14)",
         soft: "rgba(5,5,5,0.05)",
       },
-      grey: "#8B8B8B",
-      blue: "#245DFF",
-      "blue-text": "#4C7DFF",
+      grey: "#9C9C9C",
+      gold: { DEFAULT: "#C6A15B", soft: "rgba(198,161,91,0.14)" },
+      congo: "#1F6B4E",
     },
-    borderRadius: { none: "0", full: "9999px" },
+    borderRadius: { none: "0", sm: "2px", DEFAULT: "4px", full: "9999px" },
     fontFamily: {
-      display: ["var(--font-display)", "system-ui", "sans-serif"],
+      display: ["var(--font-sans)", "system-ui", "sans-serif"],
       sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-      mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      mono: ["var(--font-sans)", "system-ui", "sans-serif"],
     },
     extend: {
       fontSize: {
         // fluid editorial scale — every heading on the site comes from here
-        mega: ["clamp(3.1rem, 13.2vw, 13rem)", { lineHeight: "0.84", letterSpacing: "-0.045em" }],
-        display: ["clamp(2.6rem, 8.4vw, 7.5rem)", { lineHeight: "0.88", letterSpacing: "-0.04em" }],
-        title: ["clamp(2rem, 5.4vw, 4.4rem)", { lineHeight: "0.94", letterSpacing: "-0.035em" }],
-        heading: ["clamp(1.5rem, 3vw, 2.4rem)", { lineHeight: "1.04", letterSpacing: "-0.025em" }],
+        mega: ["clamp(3rem, 9.2vw, 9.75rem)", { lineHeight: "0.9", letterSpacing: "-0.045em" }],
+        display: ["clamp(2.5rem, 6.2vw, 6rem)", { lineHeight: "0.94", letterSpacing: "-0.04em" }],
+        title: ["clamp(2rem, 4.2vw, 3.75rem)", { lineHeight: "1", letterSpacing: "-0.035em" }],
+        heading: ["clamp(1.375rem, 2.2vw, 2rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
         lead: ["clamp(1.02rem, 1.35vw, 1.28rem)", { lineHeight: "1.62", letterSpacing: "-0.01em" }],
-        meta: ["0.7rem", { lineHeight: "1.2", letterSpacing: "0.18em" }],
+        meta: ["0.8125rem", { lineHeight: "1.35", letterSpacing: "0" }],
       },
       spacing: {
         gutter: "clamp(1.25rem, 4.2vw, 4.5rem)",

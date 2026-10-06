@@ -17,7 +17,7 @@ export default function WorkIndex({ projects }: { projects: readonly Project[] }
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <ul className="rule" onMouseLeave={() => setHovered(null)}>
+    <ul className="border-t border-ink-line" onMouseLeave={() => setHovered(null)}>
       {projects.map((project, i) => (
         <Reveal
           as="li"
@@ -26,17 +26,12 @@ export default function WorkIndex({ projects }: { projects: readonly Project[] }
           className="group border-b border-ink-line"
         >
           <Link
-            href={`/work/${project.slug}`}
-            data-cursor="VOIR"
+            href={`/projets/${project.slug}`}
             onMouseEnter={() => setHovered(project.slug)}
             onFocus={() => setHovered(project.slug)}
             className="grid-12 items-center gap-y-4 py-7 lg:py-8"
           >
-            <span className="col-span-1 font-mono text-sm text-blue-text">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-
-            <h2 className="col-span-5 font-display text-heading font-semibold text-paper transition-transform duration-500 ease-expo md:col-span-11 lg:col-span-4 lg:group-hover:translate-x-3">
+            <h2 className="col-span-6 text-heading font-semibold text-paper transition-transform duration-500 ease-expo md:col-span-12 lg:col-span-5 lg:group-hover:translate-x-2">
               {project.name}
             </h2>
 
@@ -58,7 +53,7 @@ export default function WorkIndex({ projects }: { projects: readonly Project[] }
 
             <span className="col-span-4 flex items-center justify-end gap-4 text-right md:col-span-12 lg:col-span-2">
               <span className="meta hidden whitespace-nowrap xl:inline">{project.category}</span>
-              <span className="meta">{project.year}</span>
+              <span className="meta tabular-nums">{project.year}</span>
               <ArrowUpRight className="h-4 w-4 shrink-0 text-paper/50 transition-colors duration-300 group-hover:text-paper" />
             </span>
           </Link>

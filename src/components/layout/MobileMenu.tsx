@@ -4,15 +4,15 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { NAV } from "./SiteHeader";
+import { megaMenu, nav } from "@/data/site";
 import { profile } from "@/data/profile";
 import { ArrowUpRight } from "@/components/ui/Icons";
 
 const EASE = [0.76, 0, 0.24, 1] as const;
 
 /**
- * Full-bleed typographic menu — numbered entries at display scale, contact
- * block pinned to the bottom. Focus is trapped while it is open and the
+ * Full-screen menu for touch and narrow screens: the main entries large, the
+ * project shortcuts of the mega menu underneath, contact pinned at the bottom. Focus is trapped while it is open and the
  * underlying page cannot scroll.
  */
 export default function MobileMenu({
@@ -65,26 +65,22 @@ export default function MobileMenu({
           role="dialog"
           aria-modal="true"
           aria-label="Navigation"
-          className="fixed inset-0 z-[105] flex flex-col bg-ink md:hidden"
+          className="fixed inset-0 z-[105] flex flex-col overflow-y-auto bg-ink lg:hidden"
           initial={{ clipPath: "inset(0 0 100% 0)" }}
           animate={{ clipPath: "inset(0 0 0% 0)" }}
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.6, ease: EASE }}
         >
           <div className="shell flex h-[var(--header-h)] shrink-0 items-center justify-between">
-            <span className="meta">Menu</span>
-            <button
-              type="button"
-              onClick={onClose}
-              className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-paper"
-            >
+            <span className="text-[1.05rem] font-semibold tracking-[-0.03em]">Arnold Mubuanga</span>
+            <button type="button" onClick={onClose} className="h-11 text-sm text-paper">
               Fermer
             </button>
           </div>
 
-          <nav className="shell flex flex-1 flex-col justify-center" aria-label="Navigation principale">
+          <nav className="shell flex flex-1 flex-col justify-center py-6" aria-label="Navigation principale">
             <ul>
-              {[{ href: "/", label: "Accueil", index: "00" }, ...NAV].map((item, i) => {
+              {nav.map((item, i) => {
                 const active = item.href === "/" ? activeHref === "/" : activeHref.startsWith(item.href);
                 return (
                   <motion.li
@@ -98,18 +94,37 @@ export default function MobileMenu({
                       href={item.href}
                       onClick={onClose}
                       aria-current={active ? "page" : undefined}
-                      className="flex items-baseline gap-4 py-5"
+                      className="flex items-baseline gap-4 py-3.5"
                     >
-                      <span className="meta w-8 shrink-0">{item.index}</span>
-                      <span className="font-display text-title font-semibold text-paper">
+                      <span className="text-[2rem] font-medium leading-tight tracking-[-0.03em] text-paper">
                         {item.label}
                       </span>
-                      {active && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-blue" />}
+                      {active && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-gold" />}
                     </Link>
                   </motion.li>
                 );
               })}
             </ul>
+            <motion.div
+              className="mt-8 grid grid-cols-2 gap-x-6 gap-y-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
+              {megaMenu
+                .flatMap((column) => column.links)
+                .filter((link) => link.href)
+                .map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href as string}
+                    onClick={onClose}
+                    className="py-1.5 text-sm text-grey hover:text-paper"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+            </motion.div>
           </nav>
 
           <motion.div
@@ -121,7 +136,7 @@ export default function MobileMenu({
             <p className="meta">Écrire</p>
             <a
               href={`mailto:${profile.email}`}
-              className="mt-2 inline-flex items-center gap-2 font-display text-heading text-paper"
+              className="mt-2 inline-flex items-center gap-2 text-lg text-paper"
             >
               {profile.email}
               <ArrowUpRight className="h-4 w-4" />

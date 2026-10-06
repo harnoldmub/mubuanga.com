@@ -36,13 +36,13 @@ export default function ShareLink({ url }: { url: string }) {
       <button
         type="button"
         onClick={share}
-        data-cursor="hover"
+       
         className="group mt-4 flex w-full items-center justify-between gap-4 border border-ink-line px-5 py-4 text-left transition-colors duration-300 hover:border-paper/40"
       >
         <span className="min-w-0 truncate font-mono text-sm text-paper">{display}</span>
         <span
           className={`shrink-0 font-mono text-[0.68rem] uppercase tracking-[0.14em] transition-colors duration-200 ${
-            copied ? "text-blue-text" : "text-paper/45 group-hover:text-paper"
+            copied ? "text-gold" : "text-paper/45 group-hover:text-paper"
           }`}
         >
           {copied ? "Copié" : "Partager"}

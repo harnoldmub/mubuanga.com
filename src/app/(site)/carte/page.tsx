@@ -49,7 +49,7 @@ export default function CartePage() {
           </div>
 
           <div className="relative -mt-16 px-1">
-            <p className="meta meta-blue">{profile.shortName}</p>
+            <p className="meta meta-gold">{profile.shortName}</p>
             <h1 className="mt-3 font-display text-[clamp(2rem,8.5vw,3.1rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-paper">
               Arnold
               <br />
@@ -64,7 +64,7 @@ export default function CartePage() {
           href="/carte/vcard"
           download="arnold-mubuanga-yate.vcf"
           className="btn btn-primary mt-8 w-full justify-center"
-          data-cursor="hover"
+         
         >
           Ajouter à mes contacts
           <ArrowDown className="h-4 w-4" />
@@ -77,12 +77,12 @@ export default function CartePage() {
               <a
                 href={channel.href}
                 {...(channel.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
-                data-cursor="OUVRIR"
+               
                 className="group flex min-h-[4.25rem] items-center justify-between gap-4 py-4"
               >
                 <span className="flex flex-col gap-1">
                   <span className="meta">{channel.label}</span>
-                  <span className="font-display text-base font-medium tracking-[-0.01em] text-paper transition-colors duration-300 group-hover:text-blue-text">
+                  <span className="font-display text-base font-medium tracking-[-0.01em] text-paper transition-colors duration-300 group-hover:text-gold">
                     {channel.value}
                   </span>
                 </span>
@@ -98,9 +98,9 @@ export default function CartePage() {
         <div className="mt-10 flex flex-col gap-2 border-t border-ink-line pt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p className="meta">{profile.role}</p>
           <Link
-            href="/work"
+            href="/projets"
             className="meta inline-flex min-h-11 items-center hover:text-paper"
-            data-cursor="hover"
+           
           >
             Voir mes projets →
           </Link>

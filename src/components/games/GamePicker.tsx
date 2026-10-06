@@ -30,11 +30,11 @@ export default function GamePicker({
           <button
             type="button"
             onClick={() => onPick(game.id)}
-            data-cursor="hover"
+           
             className="group flex w-full items-center justify-between gap-4 py-4 text-left"
           >
             <span className="flex items-baseline gap-4">
-              <span className="meta text-blue-text">{game.index}</span>
+              <span className="meta text-gold">{game.index}</span>
               <span
                 className={cn(
                   "font-display text-lg font-semibold tracking-[-0.02em] transition-transform duration-300 ease-expo group-hover:translate-x-1",

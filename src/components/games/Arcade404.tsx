@@ -48,7 +48,7 @@ export default function Arcade404() {
           type="button"
           onClick={() => setShowPicker((v) => !v)}
           className="btn btn-ghost"
-          data-cursor="hover"
+         
           aria-expanded={showPicker}
         >
           Jouer
@@ -70,7 +70,7 @@ export default function Arcade404() {
               onClick={() => setGame("snake")}
               aria-label="Jouer à AMY Snake"
               className="block w-full text-left"
-              data-cursor="JOUER"
+             
             >
               <Snake autoplay compact />
             </button>

@@ -1,3 +1,5 @@
+import { galleryCounts } from "./gallery.generated";
+
 /**
  * Case-study source of truth. Adding a project = adding one entry here:
  * the index page, the homepage selection, the case study, its metadata,
@@ -25,7 +27,7 @@ export type Project = {
   contribution: readonly string[];
   features: readonly string[];
   outcome?: string;
-  /** Homepage selection order — undefined means index-only. */
+  /** Homepage order: the eight most recent projects. Undefined = index only. */
   featured?: number;
 };
 
@@ -61,7 +63,6 @@ export const projects: readonly Project[] = [
       "Interface bilingue et responsive",
     ],
     outcome: "Plateforme en ligne, du formulaire public jusqu'au suivi de dossier.",
-    featured: 1,
   },
   {
     slug: "daylora",
@@ -95,7 +96,6 @@ export const projects: readonly Project[] = [
       "Cagnotte et suivi des participations",
     ],
     outcome: "Produit en production, plusieurs mariages servis depuis la même base de code.",
-    featured: 2,
   },
   {
     slug: "mboka-hub",
@@ -127,7 +127,6 @@ export const projects: readonly Project[] = [
       "Espace communauté et playlists",
       "Inscription prestataire",
     ],
-    featured: 3,
   },
   {
     slug: "bloc-leopards",
@@ -159,7 +158,229 @@ export const projects: readonly Project[] = [
       "Actualités et médias",
       "Bandeau d'annonces les jours de match",
     ],
+  },
+  {
+    slug: "luxos",
+    name: "Luxos RDC",
+    year: "2026",
+    category: "Immobilier",
+    role: "Refonte · Direction artistique · Développement",
+    url: "https://luxos-production.up.railway.app/",
+    tagline: "Investir dans l'immobilier en RDC, avec confiance et clarté.",
+    summary:
+      "La refonte complète de l'application d'un groupe immobilier congolais — parcelles viabilisées, construction, concessions — pensée aussi pour la diaspora qui achète à distance.",
+    stack: ["React", "Vite", "Express", "PostgreSQL"],
+    context:
+      "Luxos accompagne des particuliers, des entreprises et de nombreux acheteurs de la diaspora dans des projets de terrain et de construction à Kinshasa. Son application existante fonctionnait, mais ne transmettait ni l'ampleur du groupe ni la confiance qu'exige un achat à distance.",
+    challenge:
+      "Tout redessiner sans rien casser : l'assistante conversationnelle, la collecte de prospects, le simulateur et le contact WhatsApp devaient continuer de fonctionner pendant et après la refonte, en français comme en anglais.",
+    solution:
+      "Une direction « terre et or » — ivoire, encre, or — portée par une typographie architecturale et des photographies pleine largeur, et une refonte menée section par section, fonction préservée à chaque étape. Un espace diaspora dédié rend visibles le suivi et les fuseaux horaires.",
+    contribution: [
+      "Audit de l'existant et plan de refonte progressive",
+      "Direction artistique et système visuel",
+      "Refonte de l'interface, bilingue FR / EN",
+      "Préservation des fonctions métier existantes",
+    ],
+    features: [
+      "Campagnes et concessions",
+      "Espace diaspora",
+      "Assistante conversationnelle",
+      "Simulateur et contact WhatsApp",
+      "Version française et anglaise",
+    ],
+    featured: 7,
+  },
+  {
+    slug: "lombayo-consulting",
+    name: "Lombayo Consulting",
+    year: "2026",
+    category: "Site vitrine premium",
+    role: "Conception · Développement · Direction artistique",
+    url: "https://lombayo-consulting.com/",
+    tagline: "Comprendre la valeur. Connecter les opportunités.",
+    summary:
+      "Le site d'un cabinet de conseil et de négociation installé entre Dubaï et la Belgique : six univers d'expertise, une méthode, et un premier échange à engager.",
+    stack: ["Astro", "Node.js", "Resend"],
+    context:
+      "Le cabinet travaille dans la discrétion, sur des sujets où la confiance précède tout : investissement, actifs précieux, mise en relation internationale. Son site devait inspirer ce sérieux sans rien promettre de chiffré.",
+    challenge:
+      "Donner une présence premium à une activité dont une grande partie des missions reste confidentielle — sans inventer de références, de rendements ni de clients — et la rendre lisible en français comme en anglais.",
+    solution:
+      "Un noir dominant, de l'ivoire et un or rare ; une typographie éditoriale à très grande échelle ; une mise en scène au défilement qui déroule les univers puis la méthode. Le contenu suit le profil réel du cabinet, et tout ce qui n'est pas validé reste hors ligne.",
+    contribution: [
+      "Direction artistique et système typographique",
+      "Développement Astro et animations au défilement",
+      "Version française et anglaise",
+      "Formulaire de contact et envoi des demandes",
+    ],
+    features: [
+      "Six univers d'expertise",
+      "Méthode en quatre temps",
+      "Présence Dubaï, Europe et Afrique",
+      "Formulaire de premier échange",
+      "Site bilingue FR / EN",
+    ],
+    featured: 2,
+  },
+  {
+    slug: "amcros-institut",
+    name: "Amcros Institut",
+    year: "2026",
+    category: "Beauté · Réservation",
+    role: "Conception · Développement · Direction artistique",
+    url: "https://amcros-institut.com/",
+    tagline: "Une maison de beauté à Gombe, et sa réservation en ligne.",
+    summary:
+      "Le site d'un institut de beauté de Kinshasa — coiffure, ongles, soins — avec un parcours de réservation sans création de compte et un back-office pour l'équipe.",
+    stack: ["Next.js", "React", "PostgreSQL", "Motion"],
+    context:
+      "À Kinshasa, la prise de rendez-vous se fait surtout par téléphone et messagerie. L'institut voulait une vitrine à la hauteur de son lieu et un moyen de réserver qui ne dépende plus d'une réponse manuelle.",
+    challenge:
+      "Allier l'image douce et premium d'une maison de beauté à un vrai outil : prestations, créneaux, confirmations, sans imposer de compte à une clientèle qui veut réserver en une minute.",
+    solution:
+      "Une palette crème et caramel, une typographie fine et des photographies du lieu ; une réservation en quelques étapes avec confirmation immédiate, et un espace d'administration pour suivre les rendez-vous.",
+    contribution: [
+      "Direction artistique",
+      "Développement du site et du parcours de réservation",
+      "Back-office des rendez-vous",
+      "Gestion du consentement et de la mesure d'audience",
+    ],
+    features: [
+      "Réservation sans compte",
+      "Prestations par expertise",
+      "Lookbook et sélection de mèches",
+      "Avis clientes",
+      "Back-office des rendez-vous",
+    ],
     featured: 4,
+  },
+  {
+    slug: "amcros-events",
+    name: "Amcros Events",
+    year: "2026",
+    category: "Événementiel",
+    role: "Conception · Développement · Direction artistique",
+    url: "https://amcros.events/",
+    tagline: "Faire rayonner la culture congolaise.",
+    summary:
+      "Le site d'une agence événementielle et maison de création culturelle de Kinshasa : expériences, films, partenaires et demande de projet.",
+    stack: ["Next.js", "React", "Administration"],
+    context:
+      "L'agence produit des événements, des activations de marque et des projets culturels avec des partenaires de premier plan. Son site devait se placer au niveau de ces collaborations.",
+    challenge:
+      "Évoquer le luxe et l'hospitalité sans surcharger : laisser parler les images d'événements et les partenaires, tout en conduisant vers une demande de projet exploitable.",
+    solution:
+      "Une composition centrée et retenue, des titres en capitales fines, un menu plein écran, et un formulaire « votre projet » relié à un espace d'administration où l'équipe traite les demandes.",
+    contribution: [
+      "Direction artistique",
+      "Développement du site, en français et en anglais",
+      "Formulaire de projet et espace d'administration",
+    ],
+    features: [
+      "Expériences et films",
+      "Mur de partenaires",
+      "Demande de projet",
+      "Administration des demandes",
+      "Version anglaise",
+    ],
+    featured: 5,
+  },
+  {
+    slug: "avc",
+    name: "AVC — Autre Vision du Congo",
+    year: "2026",
+    category: "Politique · Institutionnel",
+    role: "Conception · Développement · Direction artistique",
+    url: "https://parti-avc.cd/",
+    tagline: "Une autre vision. Un Congo plus fort.",
+    summary:
+      "Le site d'un parti politique congolais : vision, président, implantation, actualités et adhésion, en RDC comme dans la diaspora.",
+    stack: ["Next.js", "React"],
+    context:
+      "Un parti politique s'adresse à des militants, à des sympathisants, à la presse et à la diaspora. Son site est à la fois une carte d'identité et un outil de mobilisation.",
+    challenge:
+      "Trouver un ton affirmé et moderne, loin des sites partisans saturés, tout en rendant immédiatement visibles les deux actions qui comptent : comprendre la vision, rejoindre le mouvement.",
+    solution:
+      "Une direction graphique construite sur les couleurs du parti en grands aplats, une typographie compacte à très grande échelle, et une page d'accueil qui enchaîne vision, frise chronologique, président, actualités et engagement.",
+    contribution: [
+      "Direction artistique",
+      "Développement du site",
+      "Gabarits d'actualités et pages d'implantation",
+    ],
+    features: [
+      "Vision et piliers",
+      "Frise du parti",
+      "Page du président",
+      "Actualités",
+      "Adhésion et bénévolat",
+      "Implantation internationale",
+    ],
+    featured: 6,
+  },
+  {
+    slug: "agdtn",
+    name: "Ambassade La Grâce Divine",
+    year: "2026",
+    category: "Communauté · Plateforme",
+    role: "Conception · Développement · Direction artistique",
+    url: "https://agdtn.com/",
+    tagline: "Une église bruxelloise, ses rendez-vous et sa communauté, en ligne.",
+    summary:
+      "Le site et l'espace de communication d'une église d'Anderlecht : héros vidéo, programme hebdomadaire, prédications synchronisées avec YouTube, pôles de service et demandes de prière.",
+    stack: ["Next.js", "React", "Cloudflare D1", "Cloudflare R2", "Drizzle"],
+    context:
+      "La communauté vit autant en ligne qu'en salle : cultes diffusés en direct, prédications, rendez-vous de la semaine. L'information était dispersée entre l'affiche, Facebook et YouTube.",
+    challenge:
+      "Rassembler la vie de l'église dans un site chaleureux, tenu par l'équipe communication sans développeur, tout en protégeant les demandes privées — prière, accompagnement — qui ne doivent être vues que par les bonnes personnes.",
+    solution:
+      "Une charte bleu, or et vert portée par Playfair Display, une vision qui s'allume mot à mot au défilement, une barre de service fixe ; et un espace d'administration avec brouillon et publication, rôles distincts et conservation limitée des demandes.",
+    contribution: [
+      "Direction artistique à partir de la charte",
+      "Développement du site et de l'administration",
+      "Synchronisation des prédications YouTube",
+      "Rôles, confidentialité et protection des formulaires",
+    ],
+    features: [
+      "Prochain rendez-vous et programme",
+      "Médiathèque des prédications",
+      "Neuf pôles de service",
+      "Demandes de prière et d'accompagnement",
+      "Brouillon et publication du contenu",
+    ],
+    featured: 1,
+  },
+  {
+    slug: "natacha-ruddy",
+    name: "Natacha & Ruddy",
+    year: "2026",
+    category: "Expérience privée",
+    role: "Conception · Développement",
+    url: "https://tasha-ruddy.up.railway.app/",
+    tagline: "Un mariage coutumier, raconté sur une seule page.",
+    summary:
+      "Un site d'invitation éditorial — histoire du couple, compte à rebours, galerie — et un back-office pour gérer les invités et le placement à table.",
+    stack: ["Next.js", "PostgreSQL"],
+    context:
+      "Le couple voulait une invitation qui ait la tenue d'un beau livre, et un outil pour suivre les réponses et organiser la salle.",
+    challenge:
+      "Garder une page publique très épurée, typographique, tout en portant derrière une vraie gestion des invités, des confirmations et des tables.",
+    solution:
+      "Une alternance de fonds sombres et crème, une écriture script pour les prénoms, un compte à rebours sobre ; côté organisation, un back-office avec confirmations et un tableau d'attribution des tables en masse.",
+    contribution: [
+      "Direction artistique",
+      "Développement du site et du back-office",
+      "Migration du stockage vers PostgreSQL",
+      "Mise en production",
+    ],
+    features: [
+      "Compte à rebours",
+      "Histoire et galerie du couple",
+      "Confirmation de présence",
+      "Gestion des invités",
+      "Placement à table",
+    ],
+    featured: 3,
   },
   {
     slug: "dgm",
@@ -251,7 +472,6 @@ export const projects: readonly Project[] = [
       "Réservation et prise de contact",
       "Direction artistique typographique",
     ],
-    featured: 5,
   },
   {
     slug: "awa-network",
@@ -396,6 +616,7 @@ export const projects: readonly Project[] = [
       "Boutique en ligne",
       "Devis et documents PDF",
     ],
+    featured: 8,
   },
   {
     slug: "tselem-rdc",
@@ -520,5 +741,26 @@ export function getProjectNeighbours(slug: string) {
 export const projectImage = (slug: string, variant: "desktop" | "mobile" = "desktop") =>
   `/assets/projects/${slug}-${variant}.webp`;
 
+/** Section captures further down the page, generated by scripts/build-assets.py. */
+export function projectSections(slug: string) {
+  const [desktop, mobile] = galleryCounts[slug] ?? [0, 0];
+  return {
+    desktop: Array.from({ length: desktop }, (_, i) => `/assets/projects/${slug}-s${i + 1}.webp`),
+    mobile: Array.from({ length: mobile }, (_, i) => `/assets/projects/${slug}-mobile-s${i + 1}.webp`),
+  };
+}
+
 /** 1200×630 social card generated by scripts/build-assets.py. */
 export const projectOgImage = (slug: string) => `/assets/og/${slug}.jpg`;
+
+export const projectGroups = ["Plateformes", "Sites premium", "Institutions", "Événements"] as const;
+export type ProjectGroup = (typeof projectGroups)[number];
+
+/** Coarse family used by the filters of /projets, derived from the category. */
+export function projectGroup(project: Project): ProjectGroup {
+  const c = project.category.toLowerCase();
+  if (/institution|politique|citoyenne|publique/.test(c)) return "Institutions";
+  if (/événement|privée/.test(c)) return "Événements";
+  if (/plateforme|saas|fintech/.test(c)) return "Plateformes";
+  return "Sites premium";
+}

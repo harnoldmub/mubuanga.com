@@ -1,71 +1,94 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { profile } from "@/data/profile";
+import { featuredProjects } from "@/data/projects";
+import { nav } from "@/data/site";
 
 const ELSEWHERE = [
   { label: "LinkedIn", href: profile.linkedin },
   { label: "GitHub", href: profile.github },
   { label: "Instagram", href: profile.instagramUrl },
-  { label: "Email", href: `mailto:${profile.email}` },
 ] as const;
 
 const YEAR = new Date().getFullYear();
 
-/**
- * A signature, not a sitemap. The monogram carries the brand, the three
- * disciplines carry the positioning, and four links carry everything else —
- * the navigation already lives in the header.
- */
 export default function SiteFooter() {
   return (
     <footer className="relative border-t border-ink-line bg-ink">
       <div className="shell py-14 lg:py-20">
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
-          <div>
-            <Link href="/" aria-label="AMY — accueil" className="inline-flex items-end gap-1.5">
-              <Image
-                src="/assets/brand/amy-monogram.webp"
-                alt=""
-                width={190}
-                height={73}
-                loading="lazy"
-                className="h-9 w-auto lg:h-11"
-              />
-              <span aria-hidden className="mb-1 font-mono text-xs text-paper/50">
-                ®
-              </span>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Link href="/" className="text-[1.375rem] font-semibold tracking-[-0.03em] text-paper">
+              Arnold Mubuanga
             </Link>
-            <p className="mt-5 font-display text-lg font-medium tracking-[-0.02em] text-paper">
-              {profile.name}
+            <p className="mt-3 max-w-[24rem] text-paper/65">
+              Développeur, chef de projet et créateur de plateformes digitales. Entre Lille,
+              Bruxelles et Kinshasa.
             </p>
-            <p className="meta mt-4">
-              INGÉNIERIE <span className="text-blue-text">×</span> PRODUIT{" "}
-              <span className="text-blue-text">×</span> MÉTIER
-            </p>
+            <a
+              href={`mailto:${profile.email}`}
+              className="link-underline mt-8 inline-block text-lg text-gold"
+            >
+              {profile.email}
+            </a>
           </div>
 
-          <nav aria-label="Liens externes" className="lg:text-right">
-            <ul className="flex flex-wrap gap-x-8 gap-y-3 lg:flex-col lg:gap-y-2">
+          <nav aria-label="Plan du site" className="lg:col-span-2">
+            <p className="meta">Site</p>
+            <ul className="mt-4 space-y-2">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-paper/75 transition-colors hover:text-paper">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Projets récents" className="lg:col-span-3">
+            <p className="meta">Projets récents</p>
+            <ul className="mt-4 space-y-2">
+              {featuredProjects.slice(0, 6).map((project) => (
+                <li key={project.slug}>
+                  <Link
+                    href={`/projets/${project.slug}`}
+                    className="text-paper/75 transition-colors hover:text-paper"
+                  >
+                    {project.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Réseaux" className="lg:col-span-2">
+            <p className="meta">Ailleurs</p>
+            <ul className="mt-4 space-y-2">
               {ELSEWHERE.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    {...(item.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
-                    data-cursor="OUVRIR"
-                    className="link-underline font-display text-lg font-medium tracking-[-0.02em] text-paper/70 transition-colors duration-300 hover:text-paper"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-paper/75 transition-colors hover:text-paper"
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
+              <li>
+                <a href={`tel:${profile.phone}`} className="text-paper/75 transition-colors hover:text-paper">
+                  {profile.phoneDisplay}
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
 
-        <div className="rule mt-14 flex flex-wrap items-center justify-between gap-3 pt-6">
-          <p className="meta">© {YEAR} AMY</p>
-          <p className="meta">{profile.availability}</p>
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-3 border-t border-ink-line pt-6 text-sm text-grey">
+          <p>© {YEAR} Arnold Mubuanga Yate</p>
+          <p>{profile.availability}</p>
         </div>
       </div>
     </footer>

@@ -12,7 +12,7 @@ const twMerge = extendTailwindMerge({
     classGroups: {
       "font-size": [{ text: ["mega", "display", "title", "heading", "lead", "meta"] }],
       "text-color": [
-        { text: ["ink", "paper", "grey", "blue", "current", "transparent"] },
+        { text: ["ink", "paper", "grey", "gold", "congo", "night", "current", "transparent"] },
         "text-ink-raised",
         "text-ink-line",
         "text-ink-soft",

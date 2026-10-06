@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * Shown once per session only. Counts 00 → 100 in a fixed ~1.1s, then lifts.
+ * Shown once per session only. Counts 000 → 100 in a fixed ~0.9s, then lifts.
  * It never waits on the network: a slow asset must not hold the page hostage.
  */
 export default function Loader() {
@@ -25,7 +24,7 @@ export default function Loader() {
     document.documentElement.style.overflow = "hidden";
 
     const start = performance.now();
-    const DURATION = 1100;
+    const DURATION = 900;
     // requestAnimationFrame is suspended in a background tab. A timer is not,
     // so it guarantees the overlay lifts even if the page opened unfocused.
     const failsafe = window.setTimeout(() => {
@@ -60,24 +59,26 @@ export default function Loader() {
     <AnimatePresence>
       {!done && (
         <motion.div
-          className="fixed inset-0 z-[120] flex flex-col justify-between bg-ink px-gutter py-8"
+          className="fixed inset-0 z-[120] flex flex-col justify-end bg-ink px-gutter pb-10"
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.9, ease: EASE }}
+          transition={{ duration: 0.85, ease: EASE }}
           aria-hidden
         >
-          <Image
-            src="/assets/brand/amy-monogram.webp"
-            alt=""
-            width={190}
-            height={73}
-            priority
-            className="h-[9vw] w-auto max-h-24 min-h-8"
-          />
-          <div className="flex items-end justify-between">
-            <span className="meta">Chargement</span>
-            <span className="font-mono text-[13vw] leading-none text-paper sm:text-[7vw]">
-              {String(count).padStart(2, "0")}
-            </span>
+          <div className="flex items-end justify-between gap-6">
+            <p className="overflow-hidden text-[clamp(1.75rem,4vw,3rem)] font-semibold tracking-[-0.04em] text-paper">
+              <motion.span
+                className="block"
+                initial={{ y: "105%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.8, ease: EASE }}
+              >
+                Arnold Mubuanga
+              </motion.span>
+            </p>
+            <span className="pb-1 text-sm tabular-nums text-grey">{String(count).padStart(3, "0")}</span>
+          </div>
+          <div className="mt-5 h-px w-full bg-ink-line">
+            <div className="h-px origin-left bg-gold" style={{ transform: `scaleX(${count / 100})` }} />
           </div>
         </motion.div>
       )}

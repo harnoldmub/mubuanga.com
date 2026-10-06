@@ -11,10 +11,9 @@ export default function NotFound() {
   return (
     <SiteChrome>
       <section className="relative flex min-h-[100svh] flex-col justify-between pt-[var(--header-h)]">
-      <div className="column-rules" aria-hidden />
 
       <div className="shell relative flex flex-1 flex-col justify-center py-16">
-        <p className="meta meta-blue">Erreur 404</p>
+        <p className="meta meta-gold">Erreur 404</p>
         <h1 className="mt-6 font-display text-mega font-semibold text-paper">
           <RevealLines lines={["404", "VOUS ÊTES", "HORS PISTE."]} immediate delay={0.1} fit />
         </h1>
@@ -23,11 +22,11 @@ export default function NotFound() {
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
-          <Link href="/" className="btn btn-primary" data-cursor="hover">
+          <Link href="/" className="btn btn-primary">
             <ArrowLeft className="h-4 w-4" />
             Retour à l&apos;accueil
           </Link>
-          <Link href="/work" className="btn btn-ghost" data-cursor="hover">
+          <Link href="/projets" className="btn btn-ghost">
             Voir les projets
           </Link>
         </div>
@@ -41,9 +40,9 @@ export default function NotFound() {
           {featuredProjects.slice(0, 4).map((project) => (
             <li key={project.slug}>
               <Link
-                href={`/work/${project.slug}`}
+                href={`/projets/${project.slug}`}
                 className="link-underline font-display text-lg font-medium tracking-[-0.02em] text-paper/70 hover:text-paper"
-                data-cursor="hover"
+               
               >
                 {project.name}
               </Link>

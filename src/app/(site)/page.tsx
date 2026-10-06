@@ -1,22 +1,22 @@
-import Hero from "@/components/home/Hero";
-import Manifesto from "@/components/home/Manifesto";
-import SelectedWork from "@/components/home/SelectedWork";
-import AboutTeaser from "@/components/home/AboutTeaser";
-import Capabilities from "@/components/home/Capabilities";
-import ExperienceTeaser from "@/components/home/ExperienceTeaser";
+import Builds from "@/components/home/Builds";
 import ContactCta from "@/components/home/ContactCta";
-import GamesTeaser from "@/components/home/GamesTeaser";
+import ExpertiseBand from "@/components/home/ExpertiseBand";
+import Figures from "@/components/home/Figures";
+import Hero from "@/components/home/Hero";
+import LabTeaser from "@/components/home/LabTeaser";
+import Process from "@/components/home/Process";
+import SelectedWork from "@/components/home/SelectedWork";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Manifesto />
+      <ExpertiseBand />
+      <Builds />
       <SelectedWork />
-      <AboutTeaser />
-      <Capabilities />
-      <ExperienceTeaser />
-      <GamesTeaser />
+      <Process />
+      <LabTeaser />
+      <Figures />
       <ContactCta />
     </>
   );

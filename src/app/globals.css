@@ -7,16 +7,15 @@
    ========================================================================== */
 :root {
   --ink: #050505;
-  --ink-raised: #0b0b0c;
-  --paper: #f2f0ea;
-  --grey: #8b8b8b;
-  --blue: #245dff;
-  /* #245dff sits at 3.96:1 on the ink — fine for rules, fills and the 3D
-     accent, short of AA for small text. Type uses this lifted variant, which
-     keeps headroom for the moments the hero object passes behind it. */
-  --blue-text: #4c7dff;
+  --ink-raised: #0a0c10;
+  --night: #07111f;
+  --paper: #f4f1ea;
+  --grey: #9c9c9c;
+  /* 8.6:1 on the ink: safe for small text, which is why it can be the accent. */
+  --gold: #c6a15b;
+  --congo: #1f6b4e;
 
-  --line-dark: rgba(242, 240, 234, 0.12);
+  --line-dark: rgba(244, 241, 234, 0.12);
   --line-light: rgba(5, 5, 5, 0.14);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -40,7 +39,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scrollbar-color: rgba(242, 240, 234, 0.2) var(--ink);
+  scrollbar-color: rgba(244, 241, 234, 0.2) var(--ink);
   /* `clip` rather than `hidden`: it stops sideways overflow without turning
      the root into a scroll container (which breaks position: sticky). */
   overflow-x: clip;
@@ -57,7 +56,7 @@ body {
   overflow-x: clip;
 }
 
-::selection { background: var(--blue); color: var(--paper); }
+::selection { background: var(--gold); color: var(--ink); }
 
 /* Smooth scroll is driven by Lenis; the class is added once it is running so
    that a JS failure degrades to plain native scrolling. */
@@ -70,7 +69,7 @@ html.lenis, html.lenis body { height: auto; }
    ========================================================================== */
 :focus { outline: none; }
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 .on-paper :focus-visible { outline-color: var(--ink); }
@@ -83,10 +82,8 @@ html.lenis, html.lenis body { height: auto; }
   padding: 0.75rem 1.25rem;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-mono), monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  border-radius: 2px;
   transform: translateY(-160%);
   transition: transform var(--dur-fast) var(--ease);
 }
@@ -120,15 +117,15 @@ html.lenis, html.lenis body { height: auto; }
    ========================================================================== */
 .font-display { font-variation-settings: "wght" var(--wght, 600); }
 
+/* Small supporting text: sentence case, same family as everything else. */
 .meta {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.7rem;
-  line-height: 1.2;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  letter-spacing: 0;
   color: var(--grey);
+  font-feature-settings: "tnum" 1;
 }
-.meta-blue { color: var(--blue-text); }
+.meta-gold { color: var(--gold); }
 
 .measure { max-width: 62ch; }
 
@@ -180,7 +177,8 @@ html.lenis, html.lenis body { height: auto; }
   clip-path: inset(100% 0 0 0);
   transition: clip-path 1.1s var(--ease) var(--reveal-delay, 0s);
 }
-.js .reveal-clip[data-revealed="true"] { clip-path: inset(0 0 0 0); }
+.js .reveal-clip[data-revealed="true"],
+.js [data-revealed="true"] > a > .reveal-clip { clip-path: inset(0 0 0 0); }
 
 @media (prefers-reduced-motion: reduce) {
   .js .reveal,
@@ -264,79 +262,28 @@ html.lenis, html.lenis body { height: auto; }
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1.05rem 1.6rem;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  min-height: 3rem;
+  padding: 0.8rem 1.35rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border-radius: 2px;
   border: 1px solid transparent;
   transition: background-color var(--dur-fast) var(--ease),
               color var(--dur-fast) var(--ease),
               border-color var(--dur-fast) var(--ease);
 }
 .btn-primary { background: var(--paper); color: var(--ink); }
-.btn-primary:hover { background: var(--blue); color: var(--paper); }
+.btn-primary:hover { background: var(--gold); color: var(--ink); }
 .btn-ghost { border-color: var(--line-dark); color: var(--paper); }
 .btn-ghost:hover { border-color: var(--paper); }
 .on-paper .btn-primary { background: var(--ink); color: var(--paper); }
-.on-paper .btn-primary:hover { background: var(--blue); }
+.on-paper .btn-primary:hover { background: var(--gold); }
 .on-paper .btn-ghost { border-color: var(--line-light); color: var(--ink); }
 .on-paper .btn-ghost:hover { border-color: var(--ink); }
 
 .btn .arrow { transition: transform var(--dur-fast) var(--ease); }
 .btn:hover .arrow { transform: translateX(0.28rem); }
-
-/* ==========================================================================
-   Custom cursor (pointer devices only — see Cursor.tsx)
-   ========================================================================== */
-.cursor-dot,
-.cursor-label {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 150;
-  pointer-events: none;
-  will-change: transform;
-}
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  border-radius: 999px;
-  background: var(--paper);
-  transition: opacity 0.2s linear, width 0.3s var(--ease), height 0.3s var(--ease),
-              margin 0.3s var(--ease), background-color 0.3s var(--ease);
-}
-.cursor-dot[data-state="hover"] {
-  width: 46px;
-  height: 46px;
-  margin: -23px 0 0 -23px;
-  background: rgba(242, 240, 234, 0.14);
-  backdrop-filter: blur(2px);
-}
-.cursor-dot[data-state="label"] {
-  width: 82px;
-  height: 82px;
-  margin: -41px 0 0 -41px;
-  background: var(--blue);
-}
-.cursor-label {
-  display: grid;
-  place-items: center;
-  width: 82px;
-  height: 82px;
-  margin: -41px 0 0 -41px;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  color: var(--paper);
-  opacity: 0;
-  transition: opacity 0.2s linear;
-}
-.cursor-label[data-visible="true"] { opacity: 1; }
-@media (hover: none), (pointer: coarse) {
-  .cursor-dot, .cursor-label { display: none !important; }
-}
 
 /* The hero object dissolves on the side the headline runs across, so the two
    never fight. Masking the object reads as a deliberate fade-out, where a
@@ -414,4 +361,82 @@ html.lenis, html.lenis body { height: auto; }
   .grain { animation: none; }
   .marquee { animation: none; transform: none; }
   .ring-fallback-drift { animation: none; transform: none; }
+}
+
+/* ==========================================================================
+   Refonte 2026 — header, hero, sections
+   ========================================================================== */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  padding-inline: 0.75rem;
+  font-size: 0.9375rem;
+  color: rgba(244, 241, 234, 0.72);
+  transition: color var(--dur-fast) var(--ease);
+}
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link.is-active { color: var(--paper); }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.35rem;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.nav-link.is-active::after { transform: scaleX(1); }
+
+/* A night-blue floor under the globe: depth without a coloured gradient wash. */
+.hero-floor {
+  background:
+    radial-gradient(60% 55% at 72% 52%, rgba(7, 17, 31, 0.95), transparent 70%),
+    var(--ink);
+}
+@media (max-width: 1023px) {
+  .hero-floor {
+    background:
+      radial-gradient(90% 45% at 50% 30%, rgba(7, 17, 31, 0.95), transparent 72%),
+      var(--ink);
+  }
+}
+
+.globe-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  will-change: transform, opacity;
+}
+.globe-label-text {
+  position: absolute;
+  top: -0.5rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: rgba(244, 241, 234, 0.82);
+  white-space: nowrap;
+}
+.globe-label-right { left: 0.7rem; }
+.globe-label-left { right: 0.7rem; }
+.globe-label-below { left: -0.9rem; top: 0.55rem; }
+
+/* Section heading pattern: title left, a short lead to the right. */
+.section-head {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .section-head {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    align-items: end;
+    column-gap: clamp(2rem, 6vw, 6rem);
+  }
 }

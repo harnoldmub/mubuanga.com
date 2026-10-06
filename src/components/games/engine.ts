@@ -8,7 +8,7 @@ export const PALETTE = {
   raised: "#0B0B0C",
   paper: "#F2F0EA",
   grey: "#8B8B8B",
-  blue: "#245DFF",
+  blue: "#C6A15B",
   line: "rgba(242,240,234,0.10)",
 } as const;
 

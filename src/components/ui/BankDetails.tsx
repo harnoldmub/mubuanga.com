@@ -76,7 +76,7 @@ export default function BankDetails({ fields }: { fields: readonly BankField[] }
                     type="button"
                     onClick={() => copy(field.label, field.copyValue ?? field.value)}
                     className={`-mr-2 inline-flex min-h-11 shrink-0 items-center gap-2 px-2 font-mono text-[0.68rem] uppercase tracking-[0.14em] transition-colors duration-200 ${
-                      isCopied ? "text-blue" : "text-ink/40 hover:text-ink"
+                      isCopied ? "text-gold" : "text-ink/40 hover:text-ink"
                     }`}
                     aria-label={`Copier ${field.label}`}
                   >

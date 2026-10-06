@@ -1,37 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 
 import "./globals.css";
 import { profile } from "@/data/profile";
 import { defaultDescription, identityJsonLd, JsonLd, metadataBase, siteName } from "@/lib/seo";
 
-// Display: a grotesk that holds up at 13vw. Body: Inter for long-form French.
-// Mono: numbers, years, labels — never paragraphs.
-const display = Archivo({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
-
-const sans = Inter({
+// One family for everything: Inter Tight holds a tight display setting and
+// stays readable at body size, so hierarchy comes from size and weight alone.
+const sans = Inter_Tight({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: `${profile.shortName} — Software Engineer & Product Builder`,
+    default: "Arnold Mubuanga — Développeur, chef de projet, plateformes digitales",
     template: `%s — ${profile.shortName}`,
   },
   description: defaultDescription,
@@ -46,12 +32,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName,
-    title: `${profile.shortName} — Software Engineer & Product Builder`,
+    title: "Arnold Mubuanga — Développeur, chef de projet, plateformes digitales",
     description: defaultDescription,
   },
   twitter: {
     card: "summary",
-    title: `${profile.shortName} — Software Engineer & Product Builder`,
+    title: "Arnold Mubuanga — Développeur, chef de projet, plateformes digitales",
     description: defaultDescription,
   },
 };
@@ -63,7 +49,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="fr" className={sans.variable} suppressHydrationWarning>
       <head>
         {/*
           Marks the document as scripted before first paint. Every hidden

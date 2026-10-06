@@ -10,9 +10,9 @@ const nextConfig = {
     // The previous site's routes, kept alive so existing links and indexed
     // pages land on their replacement rather than on a 404.
     return [
-      { source: "/projets", destination: "/work", permanent: true },
+      { source: "/work", destination: "/projets", permanent: true },
+      { source: "/work/:slug", destination: "/projets/:slug", permanent: true },
       { source: "/parcours", destination: "/about", permanent: true },
-      { source: "/projets/:slug", destination: "/work/:slug", permanent: true },
     ];
   },
 };

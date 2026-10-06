@@ -6,7 +6,7 @@
 export const profile = {
   name: "Arnold Mubuanga Yate",
   shortName: "AMY",
-  role: "Software Engineer · Product Builder · IT Project Lead",
+  role: "Développeur, chef de projet informatique, créateur de plateformes digitales",
   eyebrow: "Software Engineer · Product Builder",
   email: "arnold@mubuanga.com",
   phone: "+33698827193",
@@ -34,7 +34,7 @@ export const stats = [
   { value: "FULL-STACK", label: "conception, développement, production", note: "De la maquette à la mise en ligne" },
 ] as const;
 
-export const aboutLines = ["JE CONSTRUIS", "CE QUI SERT."] as const;
+export const aboutLines = ["Je construis", "ce qui sert."] as const;
 
 export const aboutParagraphs = [
   "Je suis Arnold Mubuanga Yate. Ingénieur en développement et chef de projet informatique à la Ville de Lille, entrepreneur digital le reste du temps.",
@@ -206,4 +206,4 @@ export const languages = [
   { name: "Anglais", level: "Professionnel" },
 ] as const;
 
-export const contactLines = ["UNE IDÉE ?", "CONSTRUISONS-LA."] as const;
+export const contactLines = ["Une idée ?", "Construisons-la."] as const;

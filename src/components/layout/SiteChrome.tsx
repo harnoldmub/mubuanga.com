@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 
-import Cursor from "./Cursor";
 import Grain from "./Grain";
 import Loader from "./Loader";
 import PageTransition from "./PageTransition";
@@ -17,7 +16,6 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
     <>
       <Loader />
       <SmoothScroll />
-      <Cursor />
       <Grain />
       <SiteHeader />
       <PageTransition>

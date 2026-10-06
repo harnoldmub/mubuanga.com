@@ -18,9 +18,9 @@ import {
   references,
   stack,
   stackMarks,
-  stats,
   ventures,
 } from "@/data/profile";
+import { figures } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -36,11 +36,10 @@ export default function AboutPage() {
     <>
       {/* ---------------- hero ---------------- */}
       <section className="relative pb-16 pt-[calc(var(--header-h)+clamp(4rem,10vw,8rem))]">
-        <div className="column-rules" aria-hidden />
-        <div className="shell relative">
-          <p className="meta meta-blue">{profile.role}</p>
-          <h1 className="mt-6 font-display text-mega font-semibold text-paper">
-            <RevealLines lines={aboutLines} immediate delay={0.1} fit />
+                <div className="shell relative">
+          <p className="text-gold">{profile.role}</p>
+          <h1 className="mt-6 text-display font-semibold text-paper">
+            <RevealLines lines={aboutLines} immediate delay={0.1} />
           </h1>
         </div>
       </section>
@@ -59,10 +58,7 @@ export default function AboutPage() {
                 className="object-cover object-top"
               />
             </div>
-            <p className="meta mt-4">
-              <span className="text-paper">{profile.shortName}</span>
-              <span aria-hidden className="text-paper/40">®</span>
-            </p>
+            <p className="meta mt-4">{profile.name}</p>
           </div>
 
           <div className="col-span-6 mt-10 md:col-span-7 md:mt-0 lg:col-span-7 lg:col-start-6">
@@ -81,12 +77,12 @@ export default function AboutPage() {
             ))}
 
             <ul className="mt-12 grid grid-cols-3 gap-6 border-t border-ink-line pt-8">
-              {stats.map((stat) => (
+              {figures.slice(0, 3).map((stat) => (
                 <li key={stat.label}>
-                  <p className="font-display text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-none tracking-[-0.04em] text-paper">
+                  <p className="text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums text-paper">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-xs leading-5 text-paper/50">{stat.label}</p>
+                  <p className="mt-2 text-sm leading-5 text-paper/60">{stat.label}</p>
                 </li>
               ))}
             </ul>
@@ -97,8 +93,8 @@ export default function AboutPage() {
       {/* ---------------- approach ---------------- */}
       <section className="on-paper bg-paper py-section text-ink" aria-labelledby="approach-title">
         <div className="shell">
-          <h2 id="approach-title" className="font-display text-display font-semibold">
-            <RevealLines lines={["IDÉE → PRODUIT", "CODE → PRODUCTION"]} />
+          <h2 id="approach-title" className="text-title font-semibold">
+            <RevealLines lines={["De l'idée", "à la production"]} />
           </h2>
           <ol className="mt-14 lg:mt-20">
             {approach.map((item, i) => (
@@ -108,7 +104,7 @@ export default function AboutPage() {
                 delay={i * 0.06}
                 className="grid-12 items-baseline border-t border-paper-line py-7 last:border-b lg:py-9"
               >
-                <span className="col-span-1 font-mono text-sm text-blue-text">{item.step}</span>
+                <span className="col-span-1 text-sm tabular-nums text-[#7a5f2c]">{item.step}</span>
                 <h3 className="col-span-5 font-display text-heading font-semibold md:col-span-11 lg:col-span-4">
                   {item.title}
                 </h3>
@@ -125,8 +121,8 @@ export default function AboutPage() {
       <section id="experience" className="scroll-mt-24 py-section" aria-labelledby="experience-title">
         <div className="shell">
           <p className="meta">Parcours</p>
-          <h2 id="experience-title" className="mt-6 font-display text-display font-semibold text-paper">
-            <RevealLines lines={["2017 — AUJOURD'HUI"]} />
+          <h2 id="experience-title" className="mt-6 text-title font-semibold text-paper">
+            <RevealLines lines={["Depuis 2018"]} />
           </h2>
 
           <ol className="mt-14 lg:mt-20">
@@ -139,7 +135,7 @@ export default function AboutPage() {
               >
                 <div className="grid-12 py-9 lg:py-12">
                   <div className="col-span-6 md:col-span-3 lg:col-span-2">
-                    <p className="font-mono text-sm text-blue-text">{item.period}</p>
+                    <p className="text-sm tabular-nums text-gold">{item.period}</p>
                     <p className="meta mt-2">{item.periodLabel}</p>
                   </div>
 
@@ -161,7 +157,7 @@ export default function AboutPage() {
                     <ul className="space-y-2">
                       {item.highlights.map((highlight) => (
                         <li key={highlight} className="flex gap-3 text-sm leading-6 text-paper/60">
-                          <span aria-hidden className="mt-[0.72em] h-px w-4 shrink-0 bg-blue" />
+                          <span aria-hidden className="mt-[0.72em] h-px w-4 shrink-0 bg-gold" />
                           {highlight}
                         </li>
                       ))}
@@ -215,7 +211,7 @@ export default function AboutPage() {
                   href={venture.url}
                   target="_blank"
                   rel="noreferrer"
-                  data-cursor="OUVRIR"
+                 
                   className="group flex items-start justify-between gap-6 py-6"
                 >
                   <span>
@@ -265,9 +261,9 @@ export default function AboutPage() {
 
         <div className="shell mt-16">
           <Link
-            href="/work"
+            href="/projets"
             className="btn btn-ghost"
-            data-cursor="hover"
+           
           >
             Voir les projets
             <ArrowUpRight className="arrow h-4 w-4" />

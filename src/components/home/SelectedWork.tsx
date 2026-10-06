@@ -1,41 +1,45 @@
 import Link from "next/link";
 
-import ProjectFeature from "@/components/work/ProjectFeature";
-import RevealLines from "@/components/ui/RevealLines";
+import ProjectCard from "@/components/work/ProjectCard";
 import Reveal from "@/components/ui/Reveal";
-import { ArrowRight } from "@/components/ui/Icons";
+import RevealLines from "@/components/ui/RevealLines";
 import { featuredProjects, projects } from "@/data/projects";
+
+// Alternating widths so the grid reads as an edit, not a catalogue.
+const SPANS = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7"] as const;
 
 export default function SelectedWork() {
   return (
-    <section id="work" className="relative py-section" aria-labelledby="work-title">
-      <div className="shell">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 id="work-title" className="font-display text-display font-semibold text-paper">
-            <RevealLines lines={["PROJETS", "SÉLECTIONNÉS."]} />
-          </h2>
-          <Reveal delay={0.15}>
-            <p className="meta">
-              {String(featuredProjects.length).padStart(2, "0")} / {projects.length} projets
-            </p>
-          </Reveal>
-        </div>
+    <section className="shell py-section" aria-labelledby="work-title">
+      <div className="section-head">
+        <h2 id="work-title" className="text-title font-semibold text-paper">
+          <RevealLines lines={["Projets récents"]} />
+        </h2>
+        <Reveal>
+          <p className="text-paper/70">
+            Les huit derniers projets livrés : plateformes, sites premium, institutions et
+            événements, entre la France, la Belgique et la RDC.
+          </p>
+        </Reveal>
       </div>
 
-      <div className="shell mt-14 lg:mt-20">
+      <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-12 lg:gap-y-24">
         {featuredProjects.map((project, i) => (
-          <ProjectFeature key={project.slug} project={project} index={i} priority={i === 0} />
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            priority={i < 2}
+            className={`${SPANS[i % 4]} ${i % 2 === 1 ? "lg:mt-28" : ""}`}
+          />
         ))}
       </div>
 
-      <div className="shell">
-        <Reveal className="rule flex justify-center pt-12">
-          <Link href="/work" className="btn btn-ghost" data-cursor="hover">
-            Tous les projets
-            <ArrowRight className="arrow h-4 w-4" />
-          </Link>
-        </Reveal>
-      </div>
+      <Reveal className="mt-20 flex flex-wrap items-center justify-between gap-6 border-t border-ink-line pt-8">
+        <p className="text-paper/70">{projects.length} projets au total, de 2018 à aujourd&apos;hui.</p>
+        <Link href="/projets" className="btn btn-ghost">
+          Voir tous les projets
+        </Link>
+      </Reveal>
     </section>
   );
 }

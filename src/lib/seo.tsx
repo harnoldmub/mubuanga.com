@@ -11,10 +11,10 @@ export const siteUrl = (
 ).replace(/\/$/, "");
 
 export const metadataBase = new URL(siteUrl);
-export const siteName = `${profile.shortName} — ${profile.name}`;
+export const siteName = "Arnold Mubuanga";
 
 export const defaultDescription =
-  "Arnold Mubuanga Yate (AMY) — Software Engineer, Product Builder et Chef de Projet IT. Je conçois et développe des applications métier, des plateformes web et des produits digitaux, de l'idée à la production.";
+  "Arnold Mubuanga, développeur et chef de projet : sites premium, applications web, back-offices métier et expériences 3D ou IA pour des marques, institutions et événements, entre la France, la Belgique et la RDC.";
 
 export function buildMetadata({
   title,

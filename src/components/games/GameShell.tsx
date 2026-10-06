@@ -75,7 +75,7 @@ export default function GameShell({
         {/* Taunts sit over the board, never in the chrome. */}
         <span
           className={cn(
-            "pointer-events-none absolute left-1/2 top-6 -translate-x-1/2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-blue-text transition-opacity duration-300",
+            "pointer-events-none absolute left-1/2 top-6 -translate-x-1/2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-gold transition-opacity duration-300",
             taunt ? "opacity-100" : "opacity-0",
           )}
           aria-hidden={!taunt}
@@ -98,7 +98,7 @@ export default function GameShell({
                 <p className="meta mt-3">
                   Score <span className="text-paper">{pad(score)}</span>
                   {score >= best && score > 0 && (
-                    <span className="text-blue-text"> · nouveau record</span>
+                    <span className="text-gold"> · nouveau record</span>
                   )}
                 </p>
               )}

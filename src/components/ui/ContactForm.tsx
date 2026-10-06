@@ -39,7 +39,7 @@ export default function ContactForm() {
   };
 
   const field =
-    "w-full border-0 border-b border-ink-line bg-transparent py-3 text-paper placeholder:text-paper/50 transition-colors duration-300 focus:border-blue";
+    "w-full border-0 border-b border-ink-line bg-transparent py-3 text-paper placeholder:text-paper/50 transition-colors duration-300 focus:border-gold";
 
   return (
     <form onSubmit={onSubmit} className="space-y-8">
@@ -48,7 +48,7 @@ export default function ContactForm() {
           <div key={f.name}>
             <label htmlFor={f.name} className="meta">
               {f.label}
-              {f.required && <span className="text-blue-text"> *</span>}
+              {f.required && <span className="text-gold"> *</span>}
             </label>
             <input
               id={f.name}
@@ -82,7 +82,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="meta">
-          Votre contexte <span className="text-blue-text">*</span>
+          Votre contexte <span className="text-gold">*</span>
         </label>
         <textarea
           id="message"
@@ -98,7 +98,7 @@ export default function ContactForm() {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <p className="meta">Ouvre votre messagerie</p>
-        <button type="submit" className="btn btn-primary" data-cursor="hover">
+        <button type="submit" className="btn btn-primary">
           Envoyer
           <ArrowRight className="arrow h-4 w-4" />
         </button>
