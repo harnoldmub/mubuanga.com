@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import ContactCta from "@/components/home/ContactCta";
-import LabField from "@/components/three/LabField";
 import Reveal from "@/components/ui/Reveal";
 import RevealLines from "@/components/ui/RevealLines";
 import { labExperiments } from "@/data/site";
@@ -33,7 +32,6 @@ export default function LabPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden" aria-labelledby="lab-page-title">
-        <LabField className="absolute inset-0 -z-10 bg-night-deep" />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-[5] bg-gradient-to-t from-ink via-ink/20 to-transparent"
@@ -44,8 +42,7 @@ export default function LabPage() {
           </h1>
           <Reveal immediate delay={0.25}>
             <p className="mt-6 max-w-[38rem] text-lead text-paper/75">
-              Ce que je teste avant de le mettre dans un projet client. Le champ derrière ce texte
-              est une scène WebGL : déplacez le pointeur dessus.
+              Ce que je teste avant de le mettre dans un projet client.
             </p>
           </Reveal>
         </div>

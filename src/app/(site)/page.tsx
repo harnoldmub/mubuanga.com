@@ -1,6 +1,5 @@
 import Builds from "@/components/home/Builds";
 import ContactCta from "@/components/home/ContactCta";
-import ExpertiseBand from "@/components/home/ExpertiseBand";
 import Figures from "@/components/home/Figures";
 import Hero from "@/components/home/Hero";
 import LabTeaser from "@/components/home/LabTeaser";
@@ -11,7 +10,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <ExpertiseBand />
       <Builds />
       <SelectedWork />
       <Process />

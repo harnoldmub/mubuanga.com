@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -72,7 +73,7 @@ export default function MobileMenu({
           transition={{ duration: 0.6, ease: EASE }}
         >
           <div className="shell flex h-[var(--header-h)] shrink-0 items-center justify-between">
-            <span className="text-[1.05rem] font-semibold tracking-[-0.03em]">Arnold Mubuanga</span>
+            <Image src="/assets/brand/amy-monogram.webp" alt="AMY" width={190} height={73} className="h-6 w-auto" />
             <button type="button" onClick={onClose} className="h-11 text-sm text-paper">
               Fermer
             </button>

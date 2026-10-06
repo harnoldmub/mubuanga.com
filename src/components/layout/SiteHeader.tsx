@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -106,10 +107,17 @@ export default function SiteHeader() {
         <div className="shell relative flex h-[var(--header-h)] items-center gap-6">
           <Link
             href="/"
-            className="group flex items-baseline gap-2 text-paper"
-            aria-label="Arnold Mubuanga — accueil"
+            className="group flex items-center gap-3 text-paper"
+            aria-label="AMY — Arnold Mubuanga, accueil"
           >
-            <span className="whitespace-nowrap text-[1.05rem] font-semibold tracking-[-0.03em]">Arnold Mubuanga</span>
+            <Image
+              src="/assets/brand/amy-monogram.webp"
+              alt=""
+              width={190}
+              height={73}
+              priority
+              className="h-6 w-auto lg:h-7"
+            />
             <span className="hidden text-sm text-grey transition-colors duration-300 group-hover:text-gold sm:inline">
               Studio digital
             </span>

@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import LabField from "@/components/three/LabField";
 import Reveal from "@/components/ui/Reveal";
 import RevealLines from "@/components/ui/RevealLines";
 import { labExperiments } from "@/data/site";
@@ -16,15 +15,10 @@ export default function LabTeaser() {
           <Reveal>
             <p className="text-paper/70">
               La partie expérimentale du studio : ce que je teste ici finit dans les projets clients.
-              Passez le pointeur sur le champ ci-dessous.
             </p>
           </Reveal>
         </div>
       </div>
-
-      <Reveal>
-        <LabField className="mt-12 h-[52vh] min-h-[320px] border-y border-ink-line bg-night-deep" />
-      </Reveal>
 
       <div className="shell">
         <ul className="grid border-b border-ink-line sm:grid-cols-2 lg:grid-cols-4">
