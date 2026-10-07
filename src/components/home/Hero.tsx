@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import Magnetic from "@/components/ui/Magnetic";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import Reveal from "@/components/ui/Reveal";
 import RevealLines from "@/components/ui/RevealLines";
 import { profile } from "@/data/profile";
@@ -61,7 +62,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-[5] h-3/4 bg-gradient-to-t from-ink via-ink/85 to-transparent lg:hidden"
       />
 
-      <div className="shell relative mt-auto pb-10 pt-[calc(var(--header-h)+2rem)] lg:pb-14">
+      <div className="shell relative mt-auto pb-10 pt-[calc(var(--header-h)+2rem)] lg:static lg:my-auto lg:pb-[calc(var(--header-h)+2rem)]">
         <div className="max-w-[52rem]">
           <h1
             id="hero-title"
@@ -87,9 +88,15 @@ export default function Hero() {
                 </Link>
               </Magnetic>
               <Magnetic>
-                <Link href="/contact" className="btn btn-ghost">
-                  Me contacter
-                </Link>
+                <a
+                  href={profile.whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-ghost"
+                >
+                  <WhatsAppIcon className="h-5 w-5 text-[#25D366]" />
+                  Contactez-moi
+                </a>
               </Magnetic>
             </div>
           </Reveal>

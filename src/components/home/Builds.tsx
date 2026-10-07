@@ -6,7 +6,7 @@ import { services } from "@/data/site";
 
 /**
  * Four offers as four columns. On hover the gold rule draws across, the
- * deliverables slide up into view and the stack line brightens — a small
+ * deliverables brighten — a small
  * reward for pointing at something, never motion for its own sake.
  */
 export default function Builds() {
@@ -40,7 +40,7 @@ export default function Builds() {
               </h3>
               <p className="mt-4 text-paper/70">{service.lead}</p>
 
-              <ul className="build-list mt-8 space-y-1.5 text-sm text-grey">
+              <ul className="build-list mt-8 space-y-1.5 pb-2 text-sm text-grey">
                 {service.deliverables.map((item, j) => (
                   <li
                     key={item}
@@ -52,9 +52,6 @@ export default function Builds() {
                 ))}
               </ul>
 
-              <p className="mt-auto pt-10 text-sm text-grey transition-colors duration-300 group-hover:text-gold">
-                {service.stack.join(", ")}
-              </p>
             </Link>
           </Reveal>
         ))}

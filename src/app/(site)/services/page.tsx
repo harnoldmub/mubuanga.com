@@ -70,7 +70,7 @@ export default function ServicesPage() {
                   </Reveal>
                 </div>
 
-                <Reveal className="grid gap-8 sm:grid-cols-2 lg:col-span-6 lg:col-start-7">
+                <Reveal className="lg:col-span-6 lg:col-start-7">
                   <div>
                     <h3 className="meta">Ce que vous recevez</h3>
                     <ul className="mt-4 space-y-2.5">
@@ -81,10 +81,6 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
-                  </div>
-                  <div>
-                    <h3 className="meta">Outils</h3>
-                    <p className="mt-4 text-paper/85">{service.stack.join(", ")}</p>
                   </div>
                 </Reveal>
               </div>

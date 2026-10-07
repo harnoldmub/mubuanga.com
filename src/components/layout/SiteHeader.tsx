@@ -9,6 +9,8 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
 import { nav } from "@/data/site";
+import { profile } from "@/data/profile";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -118,9 +120,6 @@ export default function SiteHeader() {
               priority
               className="h-6 w-auto lg:h-7"
             />
-            <span className="hidden text-sm text-grey transition-colors duration-300 group-hover:text-gold sm:inline">
-              Studio digital
-            </span>
           </Link>
 
           <nav aria-label="Navigation principale" className="ml-auto hidden lg:block">
@@ -183,7 +182,17 @@ export default function SiteHeader() {
             </ul>
           </nav>
 
-          <div className="ml-4 hidden lg:block">
+          <div className="ml-4 hidden items-center gap-2 lg:flex">
+            <a
+              href={profile.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Contactez-moi sur WhatsApp"
+              className="btn btn-ghost min-h-0 py-2.5"
+            >
+              <WhatsAppIcon className="h-[1.1rem] w-[1.1rem] text-[#25D366]" />
+              Contactez-moi
+            </a>
             <Link href="/contact" className="btn btn-primary min-h-0 py-2.5">
               Me contacter
             </Link>

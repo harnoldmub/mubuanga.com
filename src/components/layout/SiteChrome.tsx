@@ -6,6 +6,7 @@ import PageTransition from "./PageTransition";
 import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
 import SmoothScroll from "./SmoothScroll";
+import WhatsAppFloat from "./WhatsAppFloat";
 
 /**
  * Everything that makes the portfolio feel like the portfolio. Kept out of the
@@ -24,6 +25,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
         </main>
         <SiteFooter />
       </PageTransition>
+      <WhatsAppFloat />
     </>
   );
 }

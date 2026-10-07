@@ -1,6 +1,6 @@
 /**
  * Everything the new site says outside the case studies: navigation, the
- * mega menu, services, process, lab and figures. Case studies stay in
+ * mega menu, services, process and figures. Case studies stay in
  * `projects.ts`; biography stays in `profile.ts`.
  */
 
@@ -8,7 +8,6 @@ export const nav = [
   { href: "/", label: "Accueil" },
   { href: "/projets", label: "Projets", mega: true },
   { href: "/services", label: "Services" },
-  { href: "/lab", label: "Lab" },
   { href: "/about", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -38,8 +37,8 @@ export const megaMenu: readonly { title: string; links: readonly MegaLink[] }[] 
   {
     title: "Expériences",
     links: [
-      { label: "Three.js", note: "Scènes temps réel", href: "/lab#webgl" },
-      { label: "IA", note: "Assistants et automatisation", href: "/lab#ia" },
+      { label: "Three.js", note: "Scènes temps réel", href: "/services#experiences" },
+      { label: "IA", note: "Assistants et automatisation", href: "/services#experiences" },
       { label: "Mobile app", note: "Applications terrain", href: "/services#applications" },
       { label: "Back-office", note: "Outils métier", href: "/services#back-office" },
     ],
@@ -89,10 +88,10 @@ export const services = [
   },
   {
     id: "experiences",
-    title: "Expériences 3D / IA",
-    lead: "Une scène temps réel ou un assistant quand ils servent vraiment le propos.",
-    body: "Scènes Three.js légères avec repli mobile, visualisations de données, assistants conversationnels branchés sur le contenu réel, automatisations avec validation humaine.",
-    deliverables: ["Scène Three.js", "Visualisation de données", "Assistant conversationnel", "Automatisation"],
+    title: "Expériences IA",
+    lead: "Un assistant ou une automatisation quand ils servent vraiment le propos.",
+    body: "Assistants conversationnels branchés sur le contenu réel, tri et synthèse de demandes, visualisations de données, automatisations avec validation humaine.",
+    deliverables: ["Visualisation de données", "Assistant conversationnel", "Automatisation"],
     stack: ["Three.js", "React Three Fiber", "API IA"],
     examples: ["luxos", "lombayo-consulting"],
   },
@@ -131,33 +130,6 @@ export const figures = [
   { value: "6 500+", label: "demandes traitées sur une plateforme événementielle" },
   { value: "3 pays", label: "projets livrés en France, en Belgique et en RDC" },
   { value: "4 métiers", label: "web, mobile, back-office et IA, tenus par la même personne" },
-] as const;
-
-export const labExperiments = [
-  {
-    id: "webgl",
-    title: "WebGL",
-    body: "Des scènes temps réel légères : globe de données, objets produits, décors d'événements. Toujours avec une image de repli pour les appareils modestes.",
-    used: "Hero de ce site, Or Vert Congo, Stade des Martyrs",
-  },
-  {
-    id: "interfaces",
-    title: "Interfaces immersives",
-    body: "Défilement narratif, transitions de page, objets qui réagissent au pointeur. Le mouvement suit le contenu, jamais l'inverse.",
-    used: "Lombayo Consulting, Natacha & Ruddy",
-  },
-  {
-    id: "data",
-    title: "Visualisation de données",
-    body: "Rendre lisibles des volumes réels : contributions par thématique, inscriptions par jour, présence par événement.",
-    used: "Back-offices événementiels, tableaux de bord métier",
-  },
-  {
-    id: "ia",
-    title: "IA appliquée",
-    body: "Assistants branchés sur le vrai contenu d'un client, tri et synthèse de demandes, agents avec garde-fous et validation humaine.",
-    used: "Assistante Lina chez Luxos, agents commerce",
-  },
 ] as const;
 
 export const cities = [

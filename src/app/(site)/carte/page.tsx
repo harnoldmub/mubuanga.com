@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import QRCode from "qrcode";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,7 +28,16 @@ const CHANNELS = [
  * full bleed, and every action a thumb-sized row. The desktop view keeps the
  * same card rather than stretching it across the viewport.
  */
-export default function CartePage() {
+export default async function CartePage() {
+  const cardUrl = `${siteUrl}/carte`;
+  // Rendered on the server at build time: an SVG, no client-side script.
+  const qr = await QRCode.toString(cardUrl, {
+    type: "svg",
+    errorCorrectionLevel: "M",
+    margin: 0,
+    color: { dark: "#050505", light: "#F4F1EA" },
+  });
+
   return (
     <section className="pb-20 pt-[var(--header-h)]">
       <div className="mx-auto w-full max-w-[36rem] px-gutter">
@@ -92,8 +102,22 @@ export default function CartePage() {
           ))}
         </ul>
 
+        {/* ---- QR code: show the screen, the other person scans ---- */}
+        <div className="mt-10 flex items-center gap-5 border-t border-ink-line pt-8">
+          <div
+            role="img"
+            aria-label={`QR code vers ${cardUrl.replace(/^https?:\/\//, "")}`}
+            className="w-32 shrink-0 rounded-sm bg-paper p-3 sm:w-36 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
+            dangerouslySetInnerHTML={{ __html: qr }}
+          />
+          <div>
+            <p className="text-paper">Scannez pour ouvrir ma carte</p>
+            <p className="mt-1 text-sm text-grey">{cardUrl.replace(/^https?:\/\//, "")}</p>
+          </div>
+        </div>
+
         {/* ---- share ---- */}
-        <ShareLink url={`${siteUrl}/carte`} />
+        <ShareLink url={cardUrl} />
 
         <div className="mt-10 flex flex-col gap-2 border-t border-ink-line pt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p className="meta">{profile.role}</p>
