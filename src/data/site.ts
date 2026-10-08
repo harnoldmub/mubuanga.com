@@ -37,7 +37,7 @@ export const megaMenu: readonly { title: string; links: readonly MegaLink[] }[] 
   {
     title: "Expériences",
     links: [
-      { label: "Three.js", note: "Scènes temps réel", href: "/services#experiences" },
+      { label: "Sites immersifs", note: "Animations et interactions", href: "/services#sites-premium" },
       { label: "IA", note: "Assistants et automatisation", href: "/services#experiences" },
       { label: "Mobile app", note: "Applications terrain", href: "/services#applications" },
       { label: "Back-office", note: "Outils métier", href: "/services#back-office" },
@@ -50,7 +50,6 @@ export const expertise = [
   "API Platform",
   "React",
   "Angular",
-  "Three.js",
   "IA",
   "Railway",
   "PostgreSQL",
@@ -84,7 +83,7 @@ export const services = [
     body: "Modèle de données, rôles et permissions, tableaux de bord, imports et exports, journal des actions. Le genre d'outil que je construis aussi pour les services de la Ville de Lille.",
     deliverables: ["Modèle de données", "Rôles et permissions", "Tableaux de bord", "API et intégrations"],
     stack: ["Symfony", "API Platform", "Angular", "PostgreSQL"],
-    examples: ["agdtn", "amcros-institut", "natacha-ruddy"],
+    examples: ["amcros-institut", "daylora", "cozy-interieur"],
   },
   {
     id: "experiences",
@@ -92,7 +91,7 @@ export const services = [
     lead: "Un assistant ou une automatisation quand ils servent vraiment le propos.",
     body: "Assistants conversationnels branchés sur le contenu réel, tri et synthèse de demandes, visualisations de données, automatisations avec validation humaine.",
     deliverables: ["Visualisation de données", "Assistant conversationnel", "Automatisation"],
-    stack: ["Three.js", "React Three Fiber", "API IA"],
+    stack: ["API IA", "Automatisation"],
     examples: ["luxos", "lombayo-consulting"],
   },
 ] as const;

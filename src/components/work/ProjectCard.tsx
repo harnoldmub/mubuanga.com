@@ -3,7 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 import Reveal from "@/components/ui/Reveal";
 import { projectImage, type Project } from "@/data/projects";
@@ -28,39 +33,81 @@ export default function ProjectCard({
   // its own clip-path never reports as intersecting.
   const card = useReveal<HTMLElement>({ amount: 0.15 });
   const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: frame, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], reduced ? ["0%", "0%"] : ["-4%", "4%"]);
+  const { scrollYProgress } = useScroll({
+    target: frame,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduced ? ["0%", "0%"] : ["-4%", "4%"],
+  );
+
+  const media = project.comingSoon ? (
+    // Not launched yet: no capture of the site, just a quiet placeholder.
+    <div className="relative grid aspect-[16/10] place-items-center overflow-hidden rounded-sm border border-ink-line bg-night">
+      <div className="text-center">
+        <p className="text-[clamp(1.4rem,2.6vw,2.2rem)] font-semibold tracking-[-0.03em] text-paper/80">
+          {project.name}
+        </p>
+        <p className="mt-3 inline-flex items-center gap-2 text-sm text-gold">
+          <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />
+          Bientôt en ligne
+        </p>
+      </div>
+    </div>
+  ) : (
+    <div
+      ref={frame}
+      className="relative aspect-[16/10] overflow-hidden rounded-sm bg-ink-raised"
+    >
+      <motion.div style={{ y }} className="absolute -inset-y-[5%] inset-x-0">
+        <Image
+          src={projectImage(project.slug)}
+          alt={`Page d'accueil du site ${project.name}`}
+          fill
+          priority={priority}
+          sizes="(max-width: 1023px) 100vw, 58vw"
+          className="object-cover object-top transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.03]"
+        />
+      </motion.div>
+      <span className="pointer-events-none absolute inset-0 rounded-sm ring-1 ring-inset ring-ink-line" />
+    </div>
+  );
+
+  const content = (
+    <>
+      <div className="reveal-clip">{media}</div>
+      <Reveal className="mt-6">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="text-heading font-semibold text-paper">
+            {project.name}
+          </h3>
+          <span className="shrink-0 text-sm text-grey">{project.category}</span>
+        </div>
+        <p className="mt-2 max-w-[34rem] text-paper/70">{project.tagline}</p>
+        <span className="mt-4 inline-block text-sm text-gold">
+          {project.comingSoon ? (
+            "Bientôt en ligne"
+          ) : (
+            <span className="link-underline group-hover:bg-[length:100%_1px]">
+              Voir le projet
+            </span>
+          )}
+        </span>
+      </Reveal>
+    </>
+  );
 
   return (
     <article ref={card} className={cn("group", className)}>
-      <Link href={`/projets/${project.slug}`} className="block">
-        <div className="reveal-clip">
-          <div ref={frame} className="relative aspect-[16/10] overflow-hidden rounded-sm bg-ink-raised">
-            <motion.div style={{ y }} className="absolute -inset-y-[5%] inset-x-0">
-              <Image
-                src={projectImage(project.slug)}
-                alt={`Page d'accueil du site ${project.name}`}
-                fill
-                priority={priority}
-                sizes="(max-width: 1023px) 100vw, 58vw"
-                className="object-cover object-top transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.03]"
-              />
-            </motion.div>
-            <span className="pointer-events-none absolute inset-0 rounded-sm ring-1 ring-inset ring-ink-line" />
-          </div>
-        </div>
-
-        <Reveal className="mt-6">
-          <div className="flex items-baseline justify-between gap-4">
-            <h3 className="text-heading font-semibold text-paper">{project.name}</h3>
-            <span className="shrink-0 text-sm text-grey">{project.category}</span>
-          </div>
-          <p className="mt-2 max-w-[34rem] text-paper/70">{project.tagline}</p>
-          <span className="mt-4 inline-block text-sm text-gold">
-            <span className="link-underline group-hover:bg-[length:100%_1px]">Voir le projet</span>
-          </span>
-        </Reveal>
-      </Link>
+      {project.comingSoon ? (
+        <div>{content}</div>
+      ) : (
+        <Link href={`/projets/${project.slug}`} className="block">
+          {content}
+        </Link>
+      )}
     </article>
   );
 }

@@ -11,19 +11,22 @@ import {
   getProject,
   getProjectNeighbours,
   projectImage,
-  projects,
+  publishedProjects,
 } from "@/data/projects";
 import { buildMetadata, JsonLd, siteUrl } from "@/lib/seo";
 
 type Params = { params: { slug: string } };
 
+// Unpublished ("bientôt en ligne") projects must not be reachable by URL.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return publishedProjects.map((project) => ({ slug: project.slug }));
 }
 
 export function generateMetadata({ params }: Params): Metadata {
   const project = getProject(params.slug);
-  if (!project) return buildMetadata({ title: "Projet introuvable", noIndex: true });
+  if (!project || project.comingSoon) return buildMetadata({ title: "Projet introuvable", noIndex: true });
 
   return buildMetadata({
     title: `${project.name} — ${project.category}`,
@@ -58,7 +61,7 @@ function Chapter({
 
 export default function CaseStudyPage({ params }: Params) {
   const project = getProject(params.slug);
-  if (!project) notFound();
+  if (!project || project.comingSoon) notFound();
 
   const { previous, next } = getProjectNeighbours(project.slug);
 

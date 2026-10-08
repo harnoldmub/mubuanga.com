@@ -1,14 +1,30 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Magnetic from "@/components/ui/Magnetic";
 import { WhatsAppIcon } from "@/components/ui/Icons";
 import Reveal from "@/components/ui/Reveal";
 import RevealLines from "@/components/ui/RevealLines";
+import type { SceneShared } from "@/components/three/GlobeScene";
 import { profile } from "@/data/profile";
+import { cities } from "@/data/site";
+
+const GlobeScene = dynamic(() => import("@/components/three/GlobeScene"), { ssr: false });
+
+function webglAvailable() {
+  try {
+    const canvas = document.createElement("canvas");
+    return Boolean(canvas.getContext("webgl2") || canvas.getContext("webgl"));
+  } catch {
+    return false;
+  }
+}
+
+type Mode = "pending" | "scene" | "poster";
 
 const CLOCKS = [
   { city: "Kinshasa", zone: "Africa/Kinshasa" },
@@ -28,9 +44,51 @@ function useClock() {
 
 export default function Hero() {
   const now = useClock();
+  const section = useRef<HTMLElement>(null);
+  const pointer = useRef({ x: 0, y: 0 });
+  const labels = useRef<(HTMLElement | null)[]>([]);
+  const [mode, setMode] = useState<Mode>("pending");
+  const [shared, setShared] = useState<SceneShared | null>(null);
+  const [active, setActive] = useState(true);
+  const [ready, setReady] = useState(false);
+
+  // The animated globe, unless WebGL is missing or the visitor saves data;
+  // the poster stays underneath until the first frame is drawn.
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const light =
+      window.matchMedia("(max-width: 767px)").matches ||
+      window.matchMedia("(pointer: coarse)").matches;
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (!webglAvailable() || conn?.saveData) {
+      setMode("poster");
+      return;
+    }
+    setShared({ pointer, labels, reduced, light });
+    setMode("scene");
+  }, []);
+
+  useEffect(() => {
+    const onMove = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse") return;
+      pointer.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+      pointer.current.y = -((event.clientY / window.innerHeight) * 2 - 1);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+
+  // Stop rendering once the hero has left the screen.
+  useEffect(() => {
+    if (!section.current) return;
+    const observer = new IntersectionObserver(([entry]) => setActive(entry.isIntersecting));
+    observer.observe(section.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
+      ref={section}
       className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink"
       aria-labelledby="hero-title"
     >
@@ -38,22 +96,49 @@ export default function Hero() {
       <div aria-hidden className="hero-floor absolute inset-0 -z-10" />
 
       <div aria-hidden className="absolute inset-0 -z-10">
-        <Image
-          src="/assets/hero/globe-poster.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="hidden object-cover object-right lg:block"
-        />
-        <Image
-          src="/assets/hero/globe-poster-mobile.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top lg:hidden"
-        />
+        {mode !== "scene" || !ready ? (
+          <>
+            <Image
+              src="/assets/hero/globe-poster.webp"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="hidden object-cover object-right lg:block"
+            />
+            <Image
+              src="/assets/hero/globe-poster-mobile.webp"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-top lg:hidden"
+            />
+          </>
+        ) : null}
+        {mode === "scene" && shared && (
+          <div
+            className={`absolute inset-0 transition-opacity duration-1000 ${ready ? "opacity-100" : "opacity-0"}`}
+          >
+            <GlobeScene shared={shared} active={active} onReady={() => setReady(true)} />
+          </div>
+        )}
+        {mode === "scene" && (
+          <div className="pointer-events-none absolute inset-0">
+            {cities.map((city, i) => (
+              <span
+                key={city.name}
+                ref={(el) => {
+                  labels.current[i] = el;
+                }}
+                className="globe-label"
+                style={{ opacity: 0 }}
+              >
+                <span className={`globe-label-text globe-label-${city.side}`}>{city.name}</span>
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* legibility on narrow screens, where the text sits over the globe */}

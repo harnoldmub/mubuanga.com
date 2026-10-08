@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import ProjectsBrowser from "@/components/work/ProjectsBrowser";
 import Reveal from "@/components/ui/Reveal";
 import RevealLines from "@/components/ui/RevealLines";
-import { projects } from "@/data/projects";
+import { projects, publishedProjects } from "@/data/projects";
 import { buildMetadata, JsonLd, siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -18,7 +18,7 @@ const listJsonLd = {
   "@type": "CollectionPage",
   name: "Projets",
   url: `${siteUrl}/projets`,
-  hasPart: projects.map((project) => ({
+  hasPart: publishedProjects.map((project) => ({
     "@type": "CreativeWork",
     name: project.name,
     url: `${siteUrl}/projets/${project.slug}`,

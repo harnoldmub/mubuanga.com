@@ -178,7 +178,8 @@ html.lenis, html.lenis body { height: auto; }
   transition: clip-path 1.1s var(--ease) var(--reveal-delay, 0s);
 }
 .js .reveal-clip[data-revealed="true"],
-.js [data-revealed="true"] > a > .reveal-clip { clip-path: inset(0 0 0 0); }
+.js [data-revealed="true"] > a > .reveal-clip,
+.js [data-revealed="true"] > div > .reveal-clip { clip-path: inset(0 0 0 0); }
 
 @media (prefers-reduced-motion: reduce) {
   .js .reveal,

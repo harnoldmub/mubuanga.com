@@ -29,6 +29,8 @@ export type Project = {
   outcome?: string;
   /** Homepage order: the eight most recent projects. Undefined = index only. */
   featured?: number;
+  /** Listed, but no capture, link or case study until it launches. */
+  comingSoon?: boolean;
 };
 
 export const projects: readonly Project[] = [
@@ -349,6 +351,7 @@ export const projects: readonly Project[] = [
       "Brouillon et publication du contenu",
     ],
     featured: 1,
+    comingSoon: true,
   },
   {
     slug: "natacha-ruddy",
@@ -381,6 +384,7 @@ export const projects: readonly Project[] = [
       "Placement à table",
     ],
     featured: 3,
+    comingSoon: true,
   },
   {
     slug: "dgm",
@@ -729,12 +733,16 @@ export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
 }
 
+/** Projects with a public case study (everything except "bientôt en ligne"). */
+export const publishedProjects = projects.filter((p) => !p.comingSoon);
+
 export function getProjectNeighbours(slug: string) {
-  const i = projects.findIndex((p) => p.slug === slug);
+  const list = publishedProjects;
+  const i = list.findIndex((p) => p.slug === slug);
   if (i === -1) return { previous: undefined, next: undefined };
   return {
-    previous: projects[(i - 1 + projects.length) % projects.length],
-    next: projects[(i + 1) % projects.length],
+    previous: list[(i - 1 + list.length) % list.length],
+    next: list[(i + 1) % list.length],
   };
 }
 

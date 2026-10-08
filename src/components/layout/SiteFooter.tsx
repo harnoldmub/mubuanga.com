@@ -49,7 +49,7 @@ export default function SiteFooter() {
           <nav aria-label="Projets récents" className="lg:col-span-3">
             <p className="meta">Projets récents</p>
             <ul className="mt-4 space-y-2">
-              {featuredProjects.slice(0, 6).map((project) => (
+              {featuredProjects.filter((p) => !p.comingSoon).slice(0, 6).map((project) => (
                 <li key={project.slug}>
                   <Link
                     href={`/projets/${project.slug}`}
