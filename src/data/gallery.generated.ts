@@ -21,6 +21,5 @@ export const galleryCounts: Record<string, readonly [number, number]> = {
   "amcros-institut": [4, 2],
   "amcros-events": [4, 2],
   "avc": [4, 2],
-  "luxos": [4, 2],
   "natacha-ruddy": [4, 2],
 };

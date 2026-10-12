@@ -163,38 +163,6 @@ export const projects: readonly Project[] = [
     ],
   },
   {
-    slug: "luxos",
-    name: "Luxos RDC",
-    year: "2026",
-    category: "Immobilier",
-    role: "Refonte · Direction artistique · Développement",
-    url: "https://luxos-production.up.railway.app/",
-    tagline: "Investir dans l'immobilier en RDC, avec confiance et clarté.",
-    summary:
-      "La refonte complète de l'application d'un groupe immobilier congolais — parcelles viabilisées, construction, concessions — pensée aussi pour la diaspora qui achète à distance.",
-    stack: ["React", "Vite", "Express", "PostgreSQL"],
-    context:
-      "Luxos accompagne des particuliers, des entreprises et de nombreux acheteurs de la diaspora dans des projets de terrain et de construction à Kinshasa. Son application existante fonctionnait, mais ne transmettait ni l'ampleur du groupe ni la confiance qu'exige un achat à distance.",
-    challenge:
-      "Tout redessiner sans rien casser : l'assistante conversationnelle, la collecte de prospects, le simulateur et le contact WhatsApp devaient continuer de fonctionner pendant et après la refonte, en français comme en anglais.",
-    solution:
-      "Une direction « terre et or » — ivoire, encre, or — portée par une typographie architecturale et des photographies pleine largeur, et une refonte menée section par section, fonction préservée à chaque étape. Un espace diaspora dédié rend visibles le suivi et les fuseaux horaires.",
-    contribution: [
-      "Audit de l'existant et plan de refonte progressive",
-      "Direction artistique et système visuel",
-      "Refonte de l'interface, bilingue FR / EN",
-      "Préservation des fonctions métier existantes",
-    ],
-    features: [
-      "Campagnes et concessions",
-      "Espace diaspora",
-      "Assistante conversationnelle",
-      "Simulateur et contact WhatsApp",
-      "Version française et anglaise",
-    ],
-    featured: 4,
-  },
-  {
     slug: "amcros-institut",
     name: "Amcros Institut",
     year: "2026",
@@ -502,6 +470,7 @@ export const projects: readonly Project[] = [
       "Suivi de progression public",
       "Paiement par carte",
     ],
+    featured: 4,
   },
   {
     slug: "momento-wedding",

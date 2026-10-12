@@ -33,7 +33,6 @@ const urls = [
   ["https://amcros-institut.com/", "amcros_institut_com"],
   ["https://amcros.events/", "amcros_events"],
   ["https://parti-avc.cd/", "parti_avc_cd"],
-  ["https://luxos-production.up.railway.app/", "luxos"],
   ["https://tasha-ruddy.up.railway.app/", "tasha_ruddy"],
 ];
 

@@ -94,7 +94,7 @@ export const services = [
     body: "Assistants conversationnels branchés sur le contenu réel, tri et synthèse de demandes, visualisations de données, automatisations avec validation humaine.",
     deliverables: ["Visualisation de données", "Assistant conversationnel", "Automatisation"],
     stack: ["API IA", "Automatisation"],
-    examples: ["luxos"],
+    examples: [],
   },
 ] as const;
 

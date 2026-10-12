@@ -115,7 +115,6 @@ CAPTURES = {
     "amcros-institut":       ("amcros_institut_com", 1.0, "c"),
     "amcros-events":         ("amcros_events", 1.0, "c"),
     "avc":                   ("parti_avc_cd", 1.0, "c"),
-    "luxos":                 ("luxos", 1.0, "c"),
     "natacha-ruddy":         ("tasha_ruddy", 1.0, "c"),
 }
 DESKTOP_RATIO = 1.6  # 16:10
@@ -132,7 +131,7 @@ NAMES = {
     "kecha-2026": "Ketsia & Chad", "mami-samarylin-2026": "Mamisa & Marylin",
     "agdtn": "AGDTN",
     "amcros-institut": "Amcros Institut",
-    "amcros-events": "Amcros Events", "avc": "AVC", "luxos": "Luxos RDC",
+    "amcros-events": "Amcros Events", "avc": "AVC",
     "natacha-ruddy": "Natacha & Ruddy",
 }
 
