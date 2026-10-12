@@ -112,7 +112,6 @@ CAPTURES = {
     "kecha-2026":            ("kecha_2026", 1.0, "c"),
     "mami-samarylin-2026":   ("mami_samarylin_2026", 1.0, "c"),
     "agdtn":                 ("agdtn_com", 1.0, "c"),
-    "lombayo-consulting":    ("lombayo_consulting_com", 1.0, "c"),
     "amcros-institut":       ("amcros_institut_com", 1.0, "c"),
     "amcros-events":         ("amcros_events", 1.0, "c"),
     "avc":                   ("parti_avc_cd", 1.0, "c"),
@@ -132,7 +131,7 @@ NAMES = {
     "fondation-noah-sadiki": "Fondation Noah Sadiki",
     "kecha-2026": "Ketsia & Chad", "mami-samarylin-2026": "Mamisa & Marylin",
     "agdtn": "AGDTN",
-    "lombayo-consulting": "Lombayo Consulting", "amcros-institut": "Amcros Institut",
+    "amcros-institut": "Amcros Institut",
     "amcros-events": "Amcros Events", "avc": "AVC", "luxos": "Luxos RDC",
     "natacha-ruddy": "Natacha & Ruddy",
 }

@@ -30,7 +30,6 @@ const urls = [
   ["https://kecha2026.com/", "kecha_2026"],
   ["https://mamisamarylin2026.com/", "mami_samarylin_2026"],
   ["https://agdtn.com/", "agdtn_com"],
-  ["https://lombayo-consulting.com/", "lombayo_consulting_com"],
   ["https://amcros-institut.com/", "amcros_institut_com"],
   ["https://amcros.events/", "amcros_events"],
   ["https://parti-avc.cd/", "parti_avc_cd"],

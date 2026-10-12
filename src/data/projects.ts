@@ -98,6 +98,7 @@ export const projects: readonly Project[] = [
       "Cagnotte et suivi des participations",
     ],
     outcome: "Produit en production, plusieurs mariages servis depuis la même base de code.",
+    featured: 8,
   },
   {
     slug: "mboka-hub",
@@ -191,39 +192,7 @@ export const projects: readonly Project[] = [
       "Simulateur et contact WhatsApp",
       "Version française et anglaise",
     ],
-    featured: 7,
-  },
-  {
-    slug: "lombayo-consulting",
-    name: "Lombayo Consulting",
-    year: "2026",
-    category: "Site vitrine premium",
-    role: "Conception · Développement · Direction artistique",
-    url: "https://lombayo-consulting.com/",
-    tagline: "Comprendre la valeur. Connecter les opportunités.",
-    summary:
-      "Le site d'un cabinet de conseil et de négociation installé entre Dubaï et la Belgique : six univers d'expertise, une méthode, et un premier échange à engager.",
-    stack: ["Astro", "Node.js", "Resend"],
-    context:
-      "Le cabinet travaille dans la discrétion, sur des sujets où la confiance précède tout : investissement, actifs précieux, mise en relation internationale. Son site devait inspirer ce sérieux sans rien promettre de chiffré.",
-    challenge:
-      "Donner une présence premium à une activité dont une grande partie des missions reste confidentielle — sans inventer de références, de rendements ni de clients — et la rendre lisible en français comme en anglais.",
-    solution:
-      "Un noir dominant, de l'ivoire et un or rare ; une typographie éditoriale à très grande échelle ; une mise en scène au défilement qui déroule les univers puis la méthode. Le contenu suit le profil réel du cabinet, et tout ce qui n'est pas validé reste hors ligne.",
-    contribution: [
-      "Direction artistique et système typographique",
-      "Développement Astro et animations au défilement",
-      "Version française et anglaise",
-      "Formulaire de contact et envoi des demandes",
-    ],
-    features: [
-      "Six univers d'expertise",
-      "Méthode en quatre temps",
-      "Présence Dubaï, Europe et Afrique",
-      "Formulaire de premier échange",
-      "Site bilingue FR / EN",
-    ],
-    featured: 2,
+    featured: 6,
   },
   {
     slug: "amcros-institut",
@@ -255,7 +224,7 @@ export const projects: readonly Project[] = [
       "Avis clientes",
       "Back-office des rendez-vous",
     ],
-    featured: 4,
+    featured: 3,
   },
   {
     slug: "amcros-events",
@@ -286,7 +255,7 @@ export const projects: readonly Project[] = [
       "Administration des demandes",
       "Version anglaise",
     ],
-    featured: 5,
+    featured: 4,
   },
   {
     slug: "avc",
@@ -318,7 +287,7 @@ export const projects: readonly Project[] = [
       "Adhésion et bénévolat",
       "Implantation internationale",
     ],
-    featured: 6,
+    featured: 5,
   },
   {
     slug: "agdtn",
@@ -383,7 +352,7 @@ export const projects: readonly Project[] = [
       "Gestion des invités",
       "Placement à table",
     ],
-    featured: 3,
+    featured: 2,
     comingSoon: true,
   },
   {
@@ -620,7 +589,7 @@ export const projects: readonly Project[] = [
       "Boutique en ligne",
       "Devis et documents PDF",
     ],
-    featured: 8,
+    featured: 7,
   },
   {
     slug: "tselem-rdc",

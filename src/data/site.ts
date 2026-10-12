@@ -28,7 +28,7 @@ export const megaMenu: readonly { title: string; links: readonly MegaLink[] }[] 
   {
     title: "Sites premium",
     links: [
-      { label: "Lombayo Consulting", note: "Conseil, Dubaï et Belgique", href: "/projets/lombayo-consulting", image: "lombayo-consulting" },
+      { label: "Cozy Intérieur", note: "Design d'intérieur", href: "/projets/cozy-interieur", image: "cozy-interieur" },
       { label: "Maison Croustille", note: "Pâtisserie premium", href: null },
       { label: "AMCROS Events", note: "Agence événementielle", href: "/projets/amcros-events", image: "amcros-events" },
       { label: "Stade des Martyrs", note: "Expérience 3D", href: null },
@@ -65,7 +65,7 @@ export const services = [
     body: "Direction artistique, écriture de l'arborescence, motion et performance. Le site se charge vite, se lit bien sur un téléphone moyen et se met à jour sans développeur.",
     deliverables: ["Direction artistique", "Site vitrine ou éditorial", "Animations au défilement", "Référencement et mesure"],
     stack: ["Astro", "Next.js"],
-    examples: ["lombayo-consulting", "amcros-events", "avc"],
+    examples: ["amcros-events", "avc", "cozy-interieur"],
   },
   {
     id: "applications",
@@ -92,7 +92,7 @@ export const services = [
     body: "Assistants conversationnels branchés sur le contenu réel, tri et synthèse de demandes, visualisations de données, automatisations avec validation humaine.",
     deliverables: ["Visualisation de données", "Assistant conversationnel", "Automatisation"],
     stack: ["API IA", "Automatisation"],
-    examples: ["luxos", "lombayo-consulting"],
+    examples: ["luxos"],
   },
 ] as const;
 

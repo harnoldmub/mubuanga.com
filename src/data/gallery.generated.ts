@@ -18,7 +18,6 @@ export const galleryCounts: Record<string, readonly [number, number]> = {
   "kecha-2026": [0, 0],
   "mami-samarylin-2026": [0, 0],
   "agdtn": [4, 2],
-  "lombayo-consulting": [4, 2],
   "amcros-institut": [4, 2],
   "amcros-events": [4, 2],
   "avc": [4, 2],
