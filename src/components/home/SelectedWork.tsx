@@ -35,7 +35,7 @@ export default function SelectedWork() {
       </div>
 
       <Reveal className="mt-20 flex flex-wrap items-center justify-between gap-6 border-t border-ink-line pt-8">
-        <p className="text-paper/70">{projects.length} projets au total, de 2018 à aujourd&apos;hui.</p>
+        <p className="text-paper/70">{projects.length} projets au total.</p>
         <Link href="/projets" className="btn btn-ghost">
           Voir tous les projets
         </Link>

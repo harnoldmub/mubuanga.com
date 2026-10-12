@@ -47,7 +47,7 @@ export default function ProjectsPage() {
             </Reveal>
             <Reveal immediate delay={0.35}>
               <p className="text-paper/60 lg:text-right">
-                {projects.length} projets, de 2018 à aujourd&apos;hui
+                {projects.length} projets
               </p>
             </Reveal>
           </div>

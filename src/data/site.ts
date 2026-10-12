@@ -23,6 +23,7 @@ export const megaMenu: readonly { title: string; links: readonly MegaLink[] }[] 
       { label: "Livo", note: "Logistique B2B", href: null },
       { label: "Bloc Léopards", note: "Communauté et billetterie", href: "/projets/bloc-leopards", image: "bloc-leopards" },
       { label: "Or Vert Congo", note: "Événement, 3D, mobile", href: null },
+      { label: "AGDTN", note: "Église et communauté", href: null },
     ],
   },
   {
@@ -32,6 +33,7 @@ export const megaMenu: readonly { title: string; links: readonly MegaLink[] }[] 
       { label: "Maison Croustille", note: "Pâtisserie premium", href: null },
       { label: "AMCROS Events", note: "Agence événementielle", href: "/projets/amcros-events", image: "amcros-events" },
       { label: "Stade des Martyrs", note: "Expérience 3D", href: null },
+      { label: "Natacha & Ruddy", note: "Mariage", href: null },
     ],
   },
   {

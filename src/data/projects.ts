@@ -98,7 +98,7 @@ export const projects: readonly Project[] = [
       "Cagnotte et suivi des participations",
     ],
     outcome: "Produit en production, plusieurs mariages servis depuis la même base de code.",
-    featured: 8,
+    featured: 6,
   },
   {
     slug: "mboka-hub",
@@ -192,7 +192,7 @@ export const projects: readonly Project[] = [
       "Simulateur et contact WhatsApp",
       "Version française et anglaise",
     ],
-    featured: 6,
+    featured: 4,
   },
   {
     slug: "amcros-institut",
@@ -224,7 +224,7 @@ export const projects: readonly Project[] = [
       "Avis clientes",
       "Back-office des rendez-vous",
     ],
-    featured: 3,
+    featured: 1,
   },
   {
     slug: "amcros-events",
@@ -255,7 +255,7 @@ export const projects: readonly Project[] = [
       "Administration des demandes",
       "Version anglaise",
     ],
-    featured: 4,
+    featured: 2,
   },
   {
     slug: "avc",
@@ -287,7 +287,7 @@ export const projects: readonly Project[] = [
       "Adhésion et bénévolat",
       "Implantation internationale",
     ],
-    featured: 5,
+    featured: 3,
   },
   {
     slug: "agdtn",
@@ -319,7 +319,6 @@ export const projects: readonly Project[] = [
       "Demandes de prière et d'accompagnement",
       "Brouillon et publication du contenu",
     ],
-    featured: 1,
     comingSoon: true,
   },
   {
@@ -352,7 +351,6 @@ export const projects: readonly Project[] = [
       "Gestion des invités",
       "Placement à table",
     ],
-    featured: 2,
     comingSoon: true,
   },
   {
@@ -445,6 +443,7 @@ export const projects: readonly Project[] = [
       "Réservation et prise de contact",
       "Direction artistique typographique",
     ],
+    featured: 7,
   },
   {
     slug: "awa-network",
@@ -531,6 +530,7 @@ export const projects: readonly Project[] = [
       "Présentation des prestations",
       "Demande de réservation",
     ],
+    featured: 8,
   },
   {
     slug: "malkya",
@@ -589,7 +589,7 @@ export const projects: readonly Project[] = [
       "Boutique en ligne",
       "Devis et documents PDF",
     ],
-    featured: 7,
+    featured: 5,
   },
   {
     slug: "tselem-rdc",
@@ -695,7 +695,7 @@ export const projects: readonly Project[] = [
 ];
 
 export const featuredProjects = projects
-  .filter((p) => typeof p.featured === "number")
+  .filter((p) => typeof p.featured === "number" && !p.comingSoon)
   .sort((a, b) => (a.featured as number) - (b.featured as number));
 
 export function getProject(slug: string) {
